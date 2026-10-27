@@ -14,7 +14,7 @@ ANTES DE PUBLICAR, TROQUE:
 ARQUIVOS
   index.html    pagina
   img/          fotos e marca
-  vid/          video do hero em MP4 + WebM, mais o poster
+  vid/          video do hero (desktop e celular) + posters
   vercel.json   cache e cabecalhos
 
 SOBRE A MARCA
@@ -29,6 +29,14 @@ SOBRE A MARCA
 
 SOBRE O VIDEO DO HERO
   Origem: Reels do Instagram da academia, girado 90 graus (o material
-  foi filmado deitado). Trecho de 3s a 17s, 1280x720 nativo, mudo, loop.
-  So roda no desktop: no celular entra a foto da fachada, para nao
-  consumir dado do visitante.
+  foi filmado deitado). Trecho de 3s a 17s, mudo, em loop.
+
+  Sao dois arquivos e o JavaScript escolhe um so, pelo tamanho da tela:
+    desktop  vid/hero.webm (1,7 MB) ou vid/hero.mp4 (2,2 MB) — 1280x720
+    celular  vid/hero-mob.mp4 (680 KB) — 720x404, com fade
+  Nenhum navegador baixa os dois. Enquanto o video carrega aparece o
+  poster, e se o aparelho bloquear autoplay fica a foto da fachada.
+  Quem tem "reduzir movimento" ligado no sistema ve so a foto.
+
+  IMPORTANTE: a pasta vid/ precisa subir junto. Depois de publicar,
+  abra SEU-SITE/vid/hero.mp4 no navegador. Se der 404, o video nao foi.
