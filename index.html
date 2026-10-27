@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Champion Training Center | Academia de Musculação em São Lourenço MG</title>
+<meta name="description" content="Champion Training Center, academia de musculação em São Lourenço MG. Equipamento de linha profissional, professor na sala, bioimpedância, fisioterapia e nutrição. Aceita TotalPass e Wellhub.">
+<meta name="theme-color" content="#000000">
+
+<meta property="og:title" content="Champion Training Center | Academia em São Lourenço MG">
+<meta property="og:description" content="A academia de musculação mais bem avaliada de São Lourenço. Estrutura completa e professor na sala do primeiro treino ao último.">
+<meta property="og:image" content="img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="img/icone-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/icone-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+/* =====================================================
+   CHAMPION TRAINING CENTER
+   Feito por Digital Beyond
+   ===================================================== */
+
+:root{
+  --preto:    #000000;
+  --fundo:    #060607;
+  --carta:    #0E0E10;
+  --carta-2:  #141417;
+  --linha:    #1F1F23;
+  --linha-cl: #2C2C32;
+  --vermelho: #E11C25;
+  --verm-cl:  #FF343D;
+  --branco:   #FFFFFF;
+  --medio:    #C9C7C4;
+  --apagado:  #8A8884;
+
+  --fonte: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --max: 1240px;
+  --gut: 24px;
+  --raio: 18px;
+  --barra: 0px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; scroll-padding-top:96px; }
+
+body{
+  margin:0;
+  padding-bottom:var(--barra);
+  background:var(--preto);
+  color:var(--branco);
+  font-family:var(--fonte);
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body.travado{ overflow:hidden; }
+
+img{ max-width:100%; height:auto; display:block; }
+picture{ display:contents; }
+a{ color:inherit; text-decoration:none; }
+
+h1,h2,h3,h4{ margin:0; font-weight:700; line-height:1.14; letter-spacing:-.02em; }
+h1{ font-size:clamp(2.1rem, 4.4vw, 3.6rem); font-weight:600; letter-spacing:-.028em; }
+h2{ font-size:clamp(1.8rem, 3.4vw, 2.9rem); }
+h3{ font-size:1.25rem; }
+p{ margin:0 0 1.1em; max-width:66ch; }
+
+.wrap{ width:100%; max-width:var(--max); margin:0 auto; padding:0 var(--gut); }
+.secao{ padding:108px 0; position:relative; overflow:hidden; }
+.secao-topo0{ padding-top:0; }
+
+:focus-visible{ outline:3px solid var(--verm-cl); outline-offset:3px; }
+
+/* ---------- animações ---------- */
+@keyframes sobe{ from{opacity:0; transform:translateY(26px);} to{opacity:1; transform:none;} }
+@keyframes gira{ to{ transform:rotate(360deg); } }
+@keyframes zoomlento{ from{transform:scale(1);} to{transform:scale(1.08);} }
+
+.rev{
+  opacity:0; transform:translateY(28px);
+  transition:opacity .85s cubic-bezier(.2,.7,.3,1), transform .85s cubic-bezier(.2,.7,.3,1);
+  transition-delay:var(--d, 0s);
+}
+.rev.visivel{ opacity:1; transform:none; }
+
+/* ---------- eyebrow ---------- */
+.eyebrow{
+  display:block; margin:0 0 16px;
+  font-size:.74rem; font-weight:600; letter-spacing:.34em;
+  text-transform:uppercase; color:var(--vermelho);
+}
+
+/* ---------- botões ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding:15px 28px; border-radius:8px; border:0;
+  background:var(--vermelho); color:#fff;
+  font-family:inherit; font-size:.86rem; font-weight:600;
+  letter-spacing:.09em; text-transform:uppercase; cursor:pointer;
+  transition:background-color .22s ease, transform .22s ease, box-shadow .22s ease;
+}
+.btn:hover{ background:var(--verm-cl); transform:translateY(-2px); box-shadow:0 12px 28px rgba(225,28,37,.34); }
+.btn .seta{ width:14px; height:14px; flex:none; fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; transition:transform .25s ease; }
+.btn:hover .seta{ transform:translate(2px,-2px); }
+.btn-vazado{ background:transparent; border:1px solid var(--linha-cl); color:#fff; }
+.btn-vazado:hover{ background:rgba(255,255,255,.06); box-shadow:none; }
+
+.link-det{
+  display:block; width:100%; margin-top:14px; padding:0;
+  background:none; border:0; cursor:pointer;
+  color:var(--vermelho); font-family:inherit; font-size:.86rem; font-weight:500;
+  text-align:center; transition:color .22s ease;
+}
+.link-det:hover{ color:var(--verm-cl); text-decoration:underline; }
+
+/* ---------- cabeçalho ---------- */
+.topo{
+  position:sticky; top:0; z-index:70;
+  background:rgba(0,0,0,.6); backdrop-filter:blur(16px);
+  border-bottom:1px solid transparent;
+  transition:background-color .35s ease, border-color .35s ease;
+}
+.topo.rolado{ background:rgba(0,0,0,.96); border-bottom-color:var(--linha); }
+.topo-interno{ display:flex; align-items:center; justify-content:space-between; gap:24px; height:96px; }
+.marca{ flex:none; display:flex; align-items:center; gap:13px; }
+.marca img{ height:52px; width:auto; transition:height .35s ease; }
+.topo.rolado .marca img{ height:42px; }
+.marca-nome{ display:flex; flex-direction:column; line-height:1; }
+.marca-nome b{
+  font-size:1.18rem; font-weight:700; letter-spacing:-.015em;
+  transition:font-size .35s ease;
+}
+.marca-nome small{
+  font-size:.56rem; font-weight:500; letter-spacing:.36em;
+  color:var(--apagado); margin-top:4px;
+}
+.topo.rolado .marca-nome b{ font-size:1.04rem; }
+
+.menu{ display:flex; align-items:center; gap:34px; margin-left:auto; }
+.menu a{
+  position:relative; font-size:.95rem; font-weight:500; color:var(--medio);
+  padding:4px 0; transition:color .22s ease;
+}
+.menu a::after{
+  content:""; position:absolute; left:0; bottom:-2px; width:100%; height:2px;
+  background:var(--vermelho); transform:scaleX(0); transform-origin:left;
+  transition:transform .28s ease;
+}
+.menu a:hover{ color:#fff; }
+.menu a:hover::after{ transform:scaleX(1); }
+.topo .btn{ flex:none; padding:13px 22px; font-size:.78rem; }
+.abrir-menu,.menu-check{ display:none; }
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative; min-height:min(92vh,860px);
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:110px 0 120px; overflow:hidden;
+}
+.hero-fundo{ position:absolute; inset:0; z-index:0; }
+.hero-fundo .hero-video,
+.hero-fundo .hero-img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:58% 60%;
+}
+.hero-fundo .hero-video{ z-index:1; }
+.hero-fundo .hero-img{ z-index:0; animation:zoomlento 30s ease-out both; }
+.hero-fundo::after{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(64% 58% at 50% 50%, rgba(0,0,0,.70) 0%, rgba(0,0,0,.84) 58%, rgba(0,0,0,.94) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.80) 0%, rgba(0,0,0,.46) 32%, rgba(0,0,0,.52) 60%, rgba(0,0,0,.92) 100%);
+}
+.hero-conteudo{ position:relative; z-index:1; max-width:920px; padding:0 var(--gut); text-shadow:0 2px 24px rgba(0,0,0,.6); }
+.hero-escudo{ width:min(118px,26%); margin:0 auto 24px; animation:sobe .9s cubic-bezier(.2,.7,.3,1) both; }
+.hero .eyebrow{ animation:sobe .9s cubic-bezier(.2,.7,.3,1) .08s both; }
+.hero h1{ margin-bottom:20px; animation:sobe .9s cubic-bezier(.2,.7,.3,1) .16s both; }
+.hero h1 span{ color:var(--verm-cl); }
+.hero-sub{
+  font-size:1.06rem; font-style:italic; color:var(--medio);
+  max-width:46ch; margin:0 auto 32px;
+  animation:sobe .9s cubic-bezier(.2,.7,.3,1) .24s both;
+}
+.hero-acoes{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center;
+  animation:sobe .9s cubic-bezier(.2,.7,.3,1) .32s both; }
+.hero-nota{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px 16px;
+  margin-top:30px; font-size:.92rem; color:var(--apagado);
+  animation:sobe .9s cubic-bezier(.2,.7,.3,1) .42s both;
+}
+.estrelas{ display:flex; gap:3px; }
+.estrelas svg{ width:15px; height:15px; fill:var(--verm-cl); }
+.hero-nota b{ color:#fff; font-weight:600; }
+.hero-nota .sep{ width:1px; height:14px; background:var(--linha-cl); }
+
+.selo{ position:absolute; right:7%; bottom:9%; z-index:2; width:132px; height:132px; }
+.selo-anel{ width:100%; height:100%; animation:gira 24s linear infinite; }
+.selo-anel text{ font-size:9.1px; font-weight:600; letter-spacing:.26em; fill:rgba(255,255,255,.78); text-transform:uppercase; }
+.selo-centro{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+.selo-centro svg{ width:26px; height:26px; fill:none; stroke:var(--verm-cl); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+/* ---------- títulos de seção ---------- */
+.cab{ margin-bottom:54px; }
+.cab h2 span{ color:var(--vermelho); }
+.cab-linha{ display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; }
+.cab-linha p{ margin:0; color:var(--apagado); font-size:.98rem; max-width:40ch; }
+.cab-centro{ text-align:center; }
+.cab-centro p{ margin:14px auto 0; }
+
+/* ---------- cartão com carrossel ---------- */
+.cartao{
+  position:relative; display:grid; grid-template-columns:1fr 1fr;
+  border-radius:var(--raio); overflow:hidden; background:var(--carta);
+  border:1px solid var(--linha); min-height:452px;
+}
+.cartao-texto{ padding:58px 54px; display:flex; flex-direction:column; justify-content:center; z-index:2; }
+.cartao-texto h3{ font-size:clamp(1.4rem,2.3vw,2rem); margin-bottom:18px; text-transform:uppercase; letter-spacing:-.01em; }
+.cartao-texto h3 span{ color:var(--vermelho); }
+.cartao-texto p{ color:var(--apagado); font-size:.97rem; max-width:44ch; }
+.cartao-texto .btn{ align-self:flex-start; margin-top:10px; }
+
+.carrossel{ position:relative; overflow:hidden; }
+.carrossel-slide{ position:absolute; inset:0; opacity:0; transition:opacity .85s ease; }
+.carrossel-slide.ativo{ opacity:1; }
+.carrossel-slide img{ width:100%; height:100%; object-fit:cover; }
+.carrossel::after{
+  content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+  background:linear-gradient(90deg, var(--carta) 0%, rgba(14,14,16,.5) 24%, rgba(14,14,16,0) 60%);
+}
+.carrossel-pontos{
+  position:absolute; left:0; right:0; bottom:18px; z-index:3;
+  display:flex; justify-content:center; gap:8px;
+}
+.carrossel-pontos button{
+  width:8px; height:8px; padding:0; border:0; border-radius:50%;
+  background:rgba(255,255,255,.34); cursor:pointer;
+  transition:background-color .25s ease, width .25s ease;
+}
+.carrossel-pontos button.ativo{ background:var(--vermelho); width:22px; border-radius:4px; }
+
+.cartao + .cartao{ margin-top:22px; }
+.cartao-invertido .cartao-texto{ order:2; }
+.cartao-invertido .carrossel{ order:1; }
+.cartao-invertido .carrossel::after{
+  background:linear-gradient(270deg, var(--carta) 0%, rgba(14,14,16,.5) 24%, rgba(14,14,16,0) 60%);
+}
+
+.marcas-eq{ display:flex; flex-wrap:wrap; gap:8px; margin:4px 0 24px; }
+.marcas-eq span{
+  border:1px solid var(--linha-cl); border-radius:6px;
+  padding:6px 12px; font-size:.78rem; color:var(--medio);
+}
+
+/* ---------- números ---------- */
+.numeros{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+.numero{
+  background:var(--carta); border:1px solid var(--linha); border-radius:var(--raio);
+  padding:30px 26px; text-align:center;
+}
+.numero b{ display:block; font-size:2.1rem; font-weight:700; letter-spacing:-.03em; color:var(--verm-cl); line-height:1.1; }
+.numero span{ display:block; color:var(--apagado); font-size:.88rem; margin-top:6px; }
+
+/* ---------- vantagens ---------- */
+.vantagens{ border-top:1px solid var(--linha); }
+.vantagem{
+  display:flex; align-items:center; gap:22px;
+  padding:26px 4px; border-bottom:1px solid var(--linha);
+  transition:padding-left .3s ease, background-color .3s ease;
+}
+.vantagem:hover{ padding-left:18px; background:rgba(255,255,255,.015); }
+.vantagem-icone{
+  flex:none; width:46px; height:46px; border-radius:50%;
+  background:var(--vermelho); display:flex; align-items:center; justify-content:center;
+}
+.vantagem-icone svg{ width:21px; height:21px; fill:none; stroke:#fff; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
+.vantagem-txt h3{ font-size:1.05rem; font-weight:600; margin-bottom:2px; }
+.vantagem-txt p{ margin:0; color:var(--apagado); font-size:.93rem; }
+
+/* ---------- planos ---------- */
+.planos{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch; }
+.plano{
+  position:relative; display:flex; flex-direction:column;
+  background:var(--carta); border:1px solid var(--linha);
+  border-radius:var(--raio); padding:34px 30px 30px;
+  transition:border-color .3s ease, transform .3s ease;
+}
+.plano:hover{ border-color:var(--linha-cl); transform:translateY(-5px); }
+.plano-destaque{ border-color:var(--vermelho); background:var(--carta-2); }
+.plano-fita{
+  position:absolute; top:-12px; right:24px;
+  background:var(--vermelho); color:#fff; border-radius:5px;
+  font-size:.68rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+  padding:5px 11px;
+}
+.plano-pill{
+  display:inline-block; align-self:flex-start;
+  border:1px solid var(--linha-cl); border-radius:7px;
+  padding:7px 14px; font-size:.82rem; font-weight:500; color:var(--medio);
+  margin-bottom:30px;
+}
+.plano-de{ color:var(--apagado); font-size:.88rem; margin:0 0 2px; }
+.plano-preco{ display:flex; align-items:baseline; gap:2px; margin-bottom:6px; }
+.plano-preco .cifra{ font-size:1.2rem; font-weight:600; }
+.plano-preco .num{ font-size:3rem; font-weight:700; letter-spacing:-.04em; line-height:1; }
+.plano-preco .mes{ font-size:1rem; font-weight:400; color:var(--medio); }
+.plano-obs{ color:var(--apagado); font-size:.88rem; margin-bottom:24px; }
+.plano ul{ list-style:none; padding:0; margin:0 0 28px; }
+.plano li{
+  position:relative; padding:9px 0 9px 26px;
+  font-size:.93rem; color:var(--medio); border-bottom:1px solid var(--linha);
+}
+.plano li:last-child{ border-bottom:0; }
+.plano li::before{
+  content:""; position:absolute; left:0; top:17px;
+  width:12px; height:7px; border-left:2px solid var(--vermelho); border-bottom:2px solid var(--vermelho);
+  transform:rotate(-45deg);
+}
+.plano .btn{ width:100%; margin-top:auto; }
+
+/* ---------- modal ---------- */
+.modal{
+  position:fixed; inset:0; z-index:95; display:none;
+  align-items:center; justify-content:center; padding:var(--gut);
+  background:rgba(0,0,0,.78); backdrop-filter:blur(6px);
+}
+.modal.aberto{ display:flex; animation:sobe .3s ease both; }
+.modal-caixa{
+  position:relative; width:100%; max-width:520px; max-height:86vh; overflow-y:auto;
+  background:var(--carta); border:1px solid var(--linha-cl); border-radius:var(--raio);
+  padding:40px 36px;
+}
+.modal-fechar{
+  position:absolute; top:16px; right:16px; width:36px; height:36px;
+  border:0; border-radius:50%; background:var(--carta-2); color:var(--medio);
+  cursor:pointer; font-size:1.3rem; line-height:1;
+  transition:background-color .2s ease, color .2s ease;
+}
+.modal-fechar:hover{ background:var(--vermelho); color:#fff; }
+.modal-caixa h3{ font-size:1.4rem; margin-bottom:6px; text-transform:uppercase; }
+.modal-caixa h3 span{ color:var(--vermelho); }
+.modal-preco{ color:var(--medio); font-size:1rem; margin-bottom:24px; }
+.modal-preco b{ color:#fff; font-size:1.5rem; font-weight:700; }
+.modal-caixa h4{ font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; color:var(--apagado); margin:22px 0 12px; }
+.modal-caixa ul{ list-style:none; padding:0; margin:0; }
+.modal-caixa li{
+  position:relative; padding:8px 0 8px 24px; font-size:.93rem; color:var(--medio);
+  border-bottom:1px solid var(--linha);
+}
+.modal-caixa li::before{
+  content:""; position:absolute; left:0; top:16px;
+  width:11px; height:6px; border-left:2px solid var(--vermelho); border-bottom:2px solid var(--vermelho);
+  transform:rotate(-45deg);
+}
+.modal-caixa .btn{ width:100%; margin-top:28px; }
+
+/* ---------- avaliações ---------- */
+.nota-geral{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px 26px;
+  background:var(--carta); border:1px solid var(--linha); border-radius:var(--raio);
+  padding:26px 32px; margin-bottom:24px;
+}
+.nota-geral .valor{
+  font-size:2.7rem; font-weight:700; letter-spacing:-.04em; line-height:1; color:#fff;
+}
+.nota-geral .bloco{ display:flex; flex-direction:column; gap:4px; }
+.nota-geral .estrelas svg{ width:17px; height:17px; }
+.nota-geral small{ color:var(--apagado); font-size:.88rem; }
+.nota-geral .risco{ width:1px; height:40px; background:var(--linha-cl); }
+.nota-geral .fonte{ display:flex; align-items:center; gap:9px; color:var(--medio); font-size:.92rem; }
+.nota-geral .fonte b{ color:#fff; font-weight:600; }
+
+.avaliacoes{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.avaliacao{
+  display:flex; flex-direction:column;
+  background:var(--carta); border:1px solid var(--linha);
+  border-radius:var(--raio); padding:32px 30px;
+  transition:border-color .3s ease, transform .3s ease;
+}
+.avaliacao:hover{ border-color:var(--linha-cl); transform:translateY(-4px); }
+.avaliacao .estrelas{ margin-bottom:18px; }
+.avaliacao .estrelas svg{ width:16px; height:16px; }
+.avaliacao p{ font-size:.98rem; color:var(--medio); margin-bottom:24px; }
+.avaliacao-pessoa{ display:flex; align-items:center; gap:13px; margin-top:auto; }
+.avaliacao-inicial{
+  flex:none; width:42px; height:42px; border-radius:50%;
+  background:var(--carta-2); border:1px solid var(--linha-cl);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:600; font-size:1rem; color:var(--verm-cl);
+}
+.avaliacao-pessoa cite{ font-style:normal; font-weight:600; font-size:.96rem; display:block; }
+.avaliacao-pessoa small{ color:var(--apagado); font-size:.82rem; }
+
+/* ---------- acessibilidade ---------- */
+.acess{ background:var(--carta); border-top:1px solid var(--linha); border-bottom:1px solid var(--linha); }
+.acess-grid{ display:grid; grid-template-columns:.92fr 1.08fr; gap:60px; align-items:start; }
+.acess ul{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.acess li{
+  display:flex; align-items:center; gap:13px;
+  border:1px solid var(--linha); border-radius:10px;
+  background:var(--fundo); padding:15px 17px; font-size:.94rem; color:var(--medio);
+}
+.acess li::before{
+  content:""; flex:none; width:13px; height:7px; margin-top:-4px;
+  border-left:2.4px solid var(--vermelho); border-bottom:2.4px solid var(--vermelho);
+  transform:rotate(-45deg);
+}
+
+/* ---------- unidade ---------- */
+.unidade{
+  display:grid; grid-template-columns:1fr 1fr;
+  border-radius:var(--raio); overflow:hidden;
+  background:var(--carta); border:1px solid var(--linha);
+}
+.unidade-txt{ padding:52px 48px; }
+.unidade-txt h3{ font-size:1.6rem; text-transform:uppercase; margin-bottom:22px; }
+.unidade-txt h3 span{ color:var(--vermelho); }
+.horarios{ list-style:none; padding:0; margin:0 0 26px; }
+.horarios li{
+  position:relative; display:flex; justify-content:space-between; gap:16px;
+  padding:12px 0; border-bottom:1px solid var(--linha); font-size:.95rem;
+}
+.horarios li:first-child{ border-top:1px solid var(--linha); }
+.horarios span{ color:var(--apagado); }
+.horarios .hoje strong{ color:#fff; }
+.horarios .hoje span{ color:var(--verm-cl); font-weight:600; }
+.horarios .hoje::after{
+  content:"hoje"; position:absolute; left:-48px; top:15px;
+  font-size:.64rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--verm-cl); font-weight:600;
+}
+.endereco{ color:var(--apagado); font-size:.95rem; margin-bottom:26px; }
+.endereco a{ color:#fff; font-weight:500; border-bottom:1px solid var(--vermelho); }
+.unidade-acoes{ display:flex; flex-wrap:wrap; gap:12px; }
+.unidade-mapa{ position:relative; min-height:420px; background:var(--carta-2); }
+.unidade-mapa iframe{ width:100%; height:100%; min-height:420px; border:0; display:block; filter:grayscale(1) invert(.93) contrast(.82); }
+
+/* ---------- faq ---------- */
+.faq{ max-width:860px; margin:0 auto; }
+.faq details{
+  background:var(--carta); border:1px solid var(--linha);
+  border-radius:12px; margin-bottom:12px; overflow:hidden;
+}
+.faq summary{
+  position:relative; cursor:pointer; list-style:none;
+  padding:20px 54px 20px 24px; font-size:1rem; font-weight:500;
+  transition:color .22s ease;
+}
+.faq summary::-webkit-details-marker{ display:none; }
+.faq summary:hover{ color:var(--verm-cl); }
+.faq summary::after{ content:""; position:absolute; right:24px; top:30px; width:13px; height:2px; background:var(--vermelho); }
+.faq summary::before{
+  content:""; position:absolute; right:29.5px; top:24.5px; width:2px; height:13px;
+  background:var(--vermelho); transition:transform .3s ease, opacity .3s ease;
+}
+.faq details[open] summary::before{ transform:rotate(90deg); opacity:0; }
+.faq-corpo{ display:grid; grid-template-rows:0fr; transition:grid-template-rows .35s ease; }
+.faq details[open] .faq-corpo{ grid-template-rows:1fr; }
+.faq-corpo > div{ overflow:hidden; }
+.faq-corpo p{ margin:0; padding:0 54px 22px 24px; color:var(--apagado); font-size:.95rem; }
+
+/* ---------- chamada final ---------- */
+.final{
+  position:relative; text-align:center; padding:120px 0;
+  background:
+    linear-gradient(rgba(0,0,0,.82), rgba(0,0,0,.9)),
+    url('img/banda.jpg');
+  background:
+    linear-gradient(rgba(0,0,0,.82), rgba(0,0,0,.9)),
+    -webkit-image-set(url('img/banda.webp') type('image/webp'), url('img/banda.jpg') type('image/jpeg'));
+  background:
+    linear-gradient(rgba(0,0,0,.82), rgba(0,0,0,.9)),
+    image-set(url('img/banda.webp') type('image/webp'), url('img/banda.jpg') type('image/jpeg'));
+  background-size:cover; background-position:center 30%;
+  border-top:1px solid var(--linha);
+}
+.final h2{ margin-bottom:18px; text-wrap:balance; }
+.final h2 span{ color:var(--verm-cl); }
+.final p{ margin:0 auto 32px; color:var(--medio); }
+
+/* ---------- rodapé ---------- */
+.rodape{ background:var(--fundo); border-top:1px solid var(--linha); }
+.rodape-selo{ padding:60px 0 50px; text-align:center; border-bottom:1px solid var(--linha); }
+.rodape-selo img{ width:92px; margin:0 auto 18px; }
+.rodape-nome{
+  margin:0 0 24px; font-size:1.3rem; font-weight:700; letter-spacing:-.015em;
+  max-width:none;
+}
+.rodape-nome span{ display:block; font-size:.62rem; font-weight:500; letter-spacing:.38em; color:var(--apagado); margin-top:7px; }
+.redes{ display:flex; justify-content:center; gap:14px; }
+.redes a{
+  width:40px; height:40px; border-radius:50%; border:1px solid var(--linha-cl);
+  display:flex; align-items:center; justify-content:center;
+  transition:border-color .22s ease, background-color .22s ease;
+}
+.redes a:hover{ border-color:var(--vermelho); background:rgba(225,28,37,.12); }
+.redes svg{ width:17px; height:17px; fill:currentColor; }
+
+.rodape-grid{ display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; padding:56px 0; }
+.rodape h4{ font-size:.98rem; font-weight:600; margin-bottom:18px; }
+.rodape ul{ list-style:none; padding:0; margin:0; }
+.rodape li{ margin-bottom:11px; }
+.rodape li a, .rodape-sobre p{ color:var(--apagado); font-size:.92rem; }
+.rodape li a{ transition:color .22s ease, padding-left .22s ease; }
+.rodape li a:hover{ color:var(--verm-cl); padding-left:5px; }
+.rodape-sobre img{ width:62px; margin-bottom:20px; }
+.legal{
+  border-top:1px solid var(--linha); padding:22px 0 30px;
+  color:#6B6966; font-size:.82rem; line-height:1.8;
+}
+.legal a{ color:var(--medio); font-weight:500; }
+.legal a:hover{ color:var(--verm-cl); }
+
+/* ---------- flutuantes ---------- */
+.flutua{ position:fixed; right:22px; bottom:22px; z-index:80; display:flex; flex-direction:column; gap:12px; }
+.fab{
+  width:52px; height:52px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 10px 26px rgba(0,0,0,.55);
+  transition:transform .2s ease, background-color .2s ease;
+}
+.fab:hover{ transform:scale(1.07); }
+.fab-zap{ background:#25D366; color:#fff; }
+.fab-zap svg{ width:26px; height:26px; fill:currentColor; }
+.fab-topo{
+  background:transparent; border:1px solid var(--vermelho); color:var(--vermelho);
+  opacity:0; pointer-events:none; transition:opacity .3s ease, transform .2s ease, background-color .2s ease;
+}
+.fab-topo.ver{ opacity:1; pointer-events:auto; }
+.fab-topo:hover{ background:var(--vermelho); color:#fff; }
+.fab-topo svg{ width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+
+.acao-fixa{ display:none; }
+
+/* =====================================================
+   RESPONSIVO
+   ===================================================== */
+@media (max-width:1040px){
+  .planos{ grid-template-columns:1fr; max-width:460px; margin:0 auto; }
+  .numeros{ grid-template-columns:repeat(2,1fr); }
+  .unidade{ grid-template-columns:1fr; }
+  .unidade-mapa{ min-height:320px; }
+  .acess-grid{ grid-template-columns:1fr; gap:40px; }
+
+  .abrir-menu{
+    display:flex; align-items:center; justify-content:center;
+    width:44px; height:44px; cursor:pointer; flex:none;
+  }
+  .abrir-menu span{ position:relative; display:block; width:22px; height:2px; background:#fff; transition:background-color .2s ease; }
+  .abrir-menu span::before,.abrir-menu span::after{
+    content:""; position:absolute; left:0; width:22px; height:2px; background:#fff;
+    transition:transform .3s ease, top .3s ease;
+  }
+  .abrir-menu span::before{ top:-7px; }
+  .abrir-menu span::after{ top:7px; }
+  .menu-check:checked + .abrir-menu span{ background:transparent; }
+  .menu-check:checked + .abrir-menu span::before{ top:0; transform:rotate(45deg); }
+  .menu-check:checked + .abrir-menu span::after{ top:0; transform:rotate(-45deg); }
+
+  .topo-interno .btn{ display:none; }
+  .menu{
+    position:absolute; top:96px; left:0; right:0; display:none;
+    flex-direction:column; align-items:stretch; gap:0; margin:0;
+    background:var(--carta); border-bottom:1px solid var(--linha);
+    max-height:calc(100vh - 96px); overflow-y:auto;
+  }
+  .menu a{ padding:17px var(--gut); border-bottom:1px solid var(--linha); color:#fff; }
+  .menu a::after{ display:none; }
+  .menu-check:checked ~ .menu{ display:flex; animation:sobe .3s ease both; }
+
+  .cartao{ grid-template-columns:1fr; min-height:0; }
+  .cartao-texto{ padding:40px 32px; order:2; }
+  .carrossel{ order:1; aspect-ratio:16/10; }
+  .carrossel::after{ background:linear-gradient(0deg, var(--carta) 0%, rgba(14,14,16,.28) 42%, rgba(14,14,16,0) 100%) !important; }
+  .carrossel-pontos{ bottom:14px; }
+
+  .avaliacoes{ grid-template-columns:1fr; }
+
+  .secao{ padding:86px 0; }
+  .final{ padding:96px 0; }
+  .selo{ width:104px; height:104px; right:5%; bottom:6%; }
+  .rodape-grid{ grid-template-columns:1fr 1fr; gap:34px; }
+}
+
+@media (max-width:760px){
+  :root{ --barra:74px; }
+  .secao{ padding:72px 0; }
+  .final{ padding:80px 0; }
+  .hero{ min-height:0; padding:72px 0 92px; }
+  .hero-fundo .hero-video{ display:none; }
+  .hero-escudo{ width:min(92px,22%); }
+  .hero-acoes .btn{ width:100%; }
+  .selo{ display:none; }
+  .cab-linha{ display:block; }
+  .cab-linha p{ margin-top:14px; }
+  .numeros{ grid-template-columns:1fr; }
+  .acess ul{ grid-template-columns:1fr; gap:12px; }
+  .unidade-txt{ padding:36px 26px; }
+  .unidade-acoes .btn{ width:100%; }
+  .horarios .hoje::after{ left:auto; right:0; top:-12px; }
+  .rodape-grid{ grid-template-columns:1fr; gap:32px; }
+  .vantagem{ align-items:flex-start; gap:16px; }
+  .nota-geral{ flex-direction:column; text-align:center; gap:12px; }
+  .nota-geral .risco{ display:none; }
+  .modal-caixa{ padding:34px 26px; }
+
+  .flutua{ display:none; }
+  .acao-fixa{
+    position:fixed; left:0; right:0; bottom:0; z-index:85;
+    display:grid; grid-template-columns:1.5fr 1fr; gap:10px;
+    padding:11px var(--gut) calc(11px + env(safe-area-inset-bottom));
+    background:rgba(0,0,0,.97); border-top:1px solid var(--linha);
+    backdrop-filter:blur(12px);
+  }
+  .acao-fixa .btn{ padding:13px 10px; font-size:.76rem; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation:none !important; transition:none !important; }
+  .rev{ opacity:1 !important; transform:none !important; }
+  .hero-fundo .hero-video{ display:none; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===================== CABEÇALHO ===================== -->
+<header class="topo" id="topo">
+  <div class="wrap topo-interno">
+    <a href="#topo" class="marca" aria-label="Champion Training Center">
+      <img src="img/escudo-h.png" alt="" width="120" height="151">
+      <span class="marca-nome"><b>CHAMPION</b><small>TRAINING CENTER</small></span>
+    </a>
+
+    <input type="checkbox" id="menu-check" class="menu-check">
+    <label for="menu-check" class="abrir-menu" aria-label="Abrir e fechar o menu"><span></span></label>
+
+    <nav class="menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#vantagens">Vantagens</a>
+      <a href="#planos">Planos</a>
+      <a href="#alunos">Alunos</a>
+      <a href="#unidade">Unidade</a>
+    </nav>
+
+    <a href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20me%20matricular%20na%20Champion." class="btn">
+      Matricule-se
+      <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-fundo">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="vid/poster.jpg" aria-hidden="true">
+      <source src="vid/hero.webm" type="video/webm">
+      <source src="vid/hero.mp4" type="video/mp4">
+    </video>
+    <picture><source srcset="img/fachada.webp" type="image/webp"><img class="hero-img" src="img/fachada.jpg" alt="Fachada da Champion Training Center em São Lourenço" width="1536" height="1024" fetchpriority="high"></picture>
+  </div>
+
+  <div class="hero-conteudo">
+    <img class="hero-escudo" src="img/escudo-g.png" alt="Champion Training Center" width="420" height="528" fetchpriority="high">
+    <span class="eyebrow">Bem-vindo à Champion</span>
+    <h1>A Melhor Academia de Musculação<br>de <span>São Lourenço</span></h1>
+    <p class="hero-sub">Uma estrutura completa, com professor na sala do primeiro treino ao último.</p>
+    <div class="hero-acoes">
+      <a href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20me%20matricular%20na%20Champion." class="btn">
+        Matricule-se
+        <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+      <a href="#planos" class="btn btn-vazado">Ver planos</a>
+    </div>
+    <div class="hero-nota">
+      <div class="estrelas" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+      </div>
+      <span><b>4,8</b> no Google</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span><b>4,82</b> no Wellhub</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span>190 avaliações</span>
+    </div>
+  </div>
+
+  <a class="selo" href="#sobre" aria-label="Ver mais">
+    <svg class="selo-anel" viewBox="0 0 200 200" aria-hidden="true">
+      <defs><path id="anel" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+      <text><textPath href="#anel" startOffset="0%">Champion Training Center · São Lourenço MG · Desde 2023 ·</textPath></text>
+    </svg>
+    <div class="selo-centro">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+    </div>
+  </a>
+</section>
+
+<!-- ===================== SOBRE ===================== -->
+<section class="secao" id="sobre">
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="cab-linha">
+        <div>
+          <span class="eyebrow">Nossa academia</span>
+          <h2>Uma academia feita para quem<br><span>leva treino a sério</span></h2>
+        </div>
+        <p>Estrutura de academia grande, com o atendimento de quem conhece o aluno pelo nome.</p>
+      </div>
+    </div>
+
+    <div class="cartao rev">
+      <div class="cartao-texto">
+        <h3>A <span>Champion</span> por dentro</h3>
+        <p>Inaugurada em 2023, a Champion nasceu para dar a São Lourenço um centro de treinamento à altura de quem treina de verdade. Sala ampla e climatizada, piso emborrachado e equipamento de linha profissional, com estacionamento próprio na porta.</p>
+        <a href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20conhecer%20a%20Champion." class="btn">
+          Quero conhecer
+          <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+      <div class="carrossel" data-carrossel>
+        <div class="carrossel-slide ativo"><picture><source srcset="img/sala.webp" type="image/webp"><img src="img/sala.jpg" alt="Sala de musculação da Champion com a marca na parede" loading="lazy" width="785" height="922"></picture></div>
+        <div class="carrossel-slide"><picture><source srcset="img/m4.webp" type="image/webp"><img src="img/m4.jpg" alt="Sala ampla e iluminada da Champion" loading="lazy" width="1000" height="1177"></picture></div>
+        <div class="carrossel-slide"><picture><source srcset="img/fachada.webp" type="image/webp"><img src="img/fachada.jpg" alt="Fachada da Champion Training Center" loading="lazy" width="1536" height="1024"></picture></div>
+      </div>
+    </div>
+
+    <div class="cartao cartao-invertido rev">
+      <div class="cartao-texto">
+        <h3>Set de <span>equipamentos</span> completo</h3>
+        <p>Peso livre, aparelhos articulados de anilha, máquinas guiadas e uma área de cardio que dá conta do horário de pico. Tudo organizado por região de treino, para você montar a sessão inteira sem esperar máquina liberar.</p>
+        <div class="marcas-eq">
+          <span>Peso livre</span>
+          <span>Articulados</span>
+          <span>Guiados</span>
+          <span>Leg press</span>
+          <span>Cardio</span>
+        </div>
+        <a href="#vantagens" class="btn">
+          Comece agora
+          <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+      <div class="carrossel" data-carrossel>
+        <div class="carrossel-slide ativo"><picture><source srcset="img/m2.webp" type="image/webp"><img src="img/m2.jpg" alt="Aparelho articulado de supino na Champion" loading="lazy" width="714" height="840"></picture></div>
+        <div class="carrossel-slide"><picture><source srcset="img/m1.webp" type="image/webp"><img src="img/m1.jpg" alt="Leg press na área de peso livre" loading="lazy" width="857" height="1007"></picture></div>
+        <div class="carrossel-slide"><picture><source srcset="img/m3.webp" type="image/webp"><img src="img/m3.jpg" alt="Mesa flexora e cadeira extensora" loading="lazy" width="714" height="832"></picture></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NÚMEROS ===================== -->
+<section class="secao secao-topo0">
+  <div class="wrap">
+    <div class="numeros">
+      <div class="numero rev"><b data-conta="4,8">4,8</b><span>Nota no Google</span></div>
+      <div class="numero rev" style="--d:.08s"><b data-conta="190">190</b><span>Avaliações de alunos</span></div>
+      <div class="numero rev" style="--d:.16s"><b>6h às 22h</b><span>Segunda a sexta</span></div>
+      <div class="numero rev" style="--d:.24s"><b>7 dias</b><span>Aberto na semana toda</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VANTAGENS ===================== -->
+<section class="secao secao-topo0" id="vantagens">
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="cab-linha">
+        <div>
+          <span class="eyebrow">Vantagens</span>
+          <h2>O que você só encontra<br>na <span>Champion</span></h2>
+        </div>
+        <p>Serviços que normalmente são extra e aqui fazem parte do seu treino.</p>
+      </div>
+    </div>
+
+    <div class="vantagens rev">
+      <div class="vantagem">
+        <div class="vantagem-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+        <div class="vantagem-txt">
+          <h3>Avaliação por bioimpedância</h3>
+          <p>Medição na entrada e reavaliação periódica, para acompanhar evolução com número e não com achismo.</p>
+        </div>
+      </div>
+      <div class="vantagem">
+        <div class="vantagem-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.6-9.2-9A5.1 5.1 0 0 1 12 6.6a5.1 5.1 0 0 1 9.2 5.4C19 16.4 12 21 12 21Z"/></svg></div>
+        <div class="vantagem-txt">
+          <h3>Fisioterapia e nutrição</h3>
+          <p>Fisioterapeuta e nutricionista atendendo dentro da academia, para prevenir lesão e ajustar a alimentação.</p>
+        </div>
+      </div>
+      <div class="vantagem">
+        <div class="vantagem-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm13 10v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+        <div class="vantagem-txt">
+          <h3>Professor na sala e personal</h3>
+          <p>Ficha montada por professor, correção de execução no treino e acompanhamento individual para quem quiser.</p>
+        </div>
+      </div>
+      <div class="vantagem">
+        <div class="vantagem-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div class="vantagem-txt">
+          <h3>Horário ampliado</h3>
+          <p>Segunda a sexta das 6h às 22h sem fechar no almoço, mais sábado e domingo pela manhã.</p>
+        </div>
+      </div>
+      <div class="vantagem">
+        <div class="vantagem-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg></div>
+        <div class="vantagem-txt">
+          <h3>TotalPass e Wellhub</h3>
+          <p>Os dois convênios aceitos na recepção. Apresentou o acesso, já entra e treina.</p>
+        </div>
+      </div>
+      <div class="vantagem">
+        <div class="vantagem-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8ZM6 1v3M10 1v3M14 1v3"/></svg></div>
+        <div class="vantagem-txt">
+          <h3>Cafeteria e convivência</h3>
+          <p>Café, shake, Wi-Fi, cadeira de massagem e espaço para ficar depois do treino.</p>
+        </div>
+      </div>
+      <div class="vantagem">
+        <div class="vantagem-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-5h6v5"/></svg></div>
+        <div class="vantagem-txt">
+          <h3>Estacionamento próprio</h3>
+          <p>Vagas na porta, incluindo vaga acessível. Você chega, estaciona e sobe para treinar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PLANOS ===================== -->
+<section class="secao secao-topo0" id="planos">
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="cab-linha">
+        <div>
+          <span class="eyebrow">Planos</span>
+          <h2>Conheça os planos<br><span>disponíveis</span></h2>
+        </div>
+        <p>Sem taxa escondida e sem pegadinha na renovação. Você escolhe e começa a treinar no mesmo dia.</p>
+      </div>
+    </div>
+
+    <div class="planos">
+      <div class="plano rev">
+        <span class="plano-pill">Champion | Mensal</span>
+        <p class="plano-de">A partir de</p>
+        <div class="plano-preco"><span class="cifra">R$</span><span class="num">129</span><span class="mes">/mês</span></div>
+        <p class="plano-obs">Sem fidelidade, cancela quando quiser.</p>
+        <ul>
+          <li>Acesso livre em todos os horários</li>
+          <li>Ficha montada pelo professor</li>
+          <li>Acompanhamento na sala</li>
+          <li>Aulas coletivas incluídas</li>
+        </ul>
+        <a href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20o%20plano%20mensal%20da%20Champion." class="btn">
+          Comece agora
+          <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <button class="link-det" data-modal="mensal">Detalhes</button>
+      </div>
+
+      <div class="plano plano-destaque rev" style="--d:.08s">
+        <span class="plano-fita">Mais escolhido</span>
+        <span class="plano-pill">Champion | Trimestral</span>
+        <p class="plano-de">A partir de</p>
+        <div class="plano-preco"><span class="cifra">R$</span><span class="num">109</span><span class="mes">/mês</span></div>
+        <p class="plano-obs">Três meses, pagos mensalmente.</p>
+        <ul>
+          <li>Tudo o que tem no mensal</li>
+          <li>Avaliação por bioimpedância</li>
+          <li>Reavaliação no fim do trimestre</li>
+          <li>Treino ajustado a cada 30 dias</li>
+        </ul>
+        <a href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20o%20plano%20trimestral%20da%20Champion." class="btn">
+          Comece agora
+          <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <button class="link-det" data-modal="trimestral">Detalhes</button>
+      </div>
+
+      <div class="plano rev" style="--d:.16s">
+        <span class="plano-pill">Champion | Anual</span>
+        <p class="plano-de">A partir de</p>
+        <div class="plano-preco"><span class="cifra">R$</span><span class="num">89</span><span class="mes">/mês</span></div>
+        <p class="plano-obs">Doze meses, o melhor custo por treino.</p>
+        <ul>
+          <li>Tudo o que tem no trimestral</li>
+          <li>Bioimpedância a cada três meses</li>
+          <li>Matrícula isenta</li>
+          <li>Preço travado no contrato inteiro</li>
+        </ul>
+        <a href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20o%20plano%20anual%20da%20Champion." class="btn">
+          Garanta já
+          <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <button class="link-det" data-modal="anual">Detalhes</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ALUNOS ===================== -->
+<section class="secao secao-topo0" id="alunos">
+  <div class="wrap">
+    <div class="cab cab-centro rev">
+      <span class="eyebrow">Nossos alunos</span>
+      <h2>Como é a experiência<br>de quem treina na <span>Champion</span></h2>
+      <p>Avaliações publicadas por alunos no perfil da academia no Google.</p>
+    </div>
+
+    <div class="nota-geral rev">
+      <div class="valor" data-conta="4,8">4,8</div>
+      <div class="bloco">
+        <div class="estrelas" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+        </div>
+        <small>Nota média no Google</small>
+      </div>
+      <div class="risco" aria-hidden="true"></div>
+      <div class="fonte"><b>82</b> avaliações no Google</div>
+      <div class="risco" aria-hidden="true"></div>
+      <div class="fonte"><b>108</b> avaliações no Wellhub</div>
+    </div>
+
+    <div class="avaliacoes">
+      <div class="avaliacao rev">
+        <div class="estrelas" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+        </div>
+        <p>Ambiente excelente, aconchegante e com profissionais de primeira qualidade. Estou muito satisfeito!</p>
+        <div class="avaliacao-pessoa">
+          <div class="avaliacao-inicial" aria-hidden="true">R</div>
+          <div><cite>Rogério Casamentos</cite><small>Avaliação no Google</small></div>
+        </div>
+      </div>
+
+      <div class="avaliacao rev" style="--d:.08s">
+        <div class="estrelas" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+        </div>
+        <p>Excelentes profissionais, ambiente aconchegante e agradável. Tem uma super estrutura!</p>
+        <div class="avaliacao-pessoa">
+          <div class="avaliacao-inicial" aria-hidden="true">S</div>
+          <div><cite>Suelen Siqueira</cite><small>Avaliação no Google</small></div>
+        </div>
+      </div>
+
+      <div class="avaliacao rev" style="--d:.16s">
+        <div class="estrelas" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+        </div>
+        <p>Perfeita, top demais. O melhor é a atenção dos professores.</p>
+        <div class="avaliacao-pessoa">
+          <div class="avaliacao-inicial" aria-hidden="true">L</div>
+          <div><cite>Leonardo Carvalho</cite><small>Avaliação no Google</small></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== ACESSIBILIDADE ===================== -->
+<section class="secao acess" id="acessibilidade">
+  <div class="wrap acess-grid">
+    <div class="rev">
+      <span class="eyebrow">Acessibilidade</span>
+      <h2>Aqui todo mundo<br><span>treina</span></h2>
+      <p style="color:var(--apagado); font-size:.98rem; margin:0;">A academia foi pensada para receber quem tem mobilidade reduzida, quem é neurodivergente e quem está voltando de uma lesão. Se você tem alguma necessidade específica, chame no WhatsApp antes de vir que a gente organiza tudo.</p>
+    </div>
+
+    <ul class="rev" style="--d:.08s">
+      <li>Espaço para cadeira de rodas</li>
+      <li>Portas e corredores adaptados</li>
+      <li>Banheiro e chuveiro acessíveis</li>
+      <li>Vaga de estacionamento acessível</li>
+      <li>Intérpretes de língua de sinais</li>
+      <li>Adaptações para pessoas autistas</li>
+      <li>Assistência a quem tem deficiência</li>
+      <li>Acompanhamento de fisioterapeuta</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== UNIDADE ===================== -->
+<section class="secao" id="unidade">
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="cab-linha">
+        <div>
+          <span class="eyebrow">Unidade</span>
+          <h2>Onde a gente<br><span>está</span></h2>
+        </div>
+        <p>A poucos minutos do centro de São Lourenço, com estacionamento próprio na porta.</p>
+      </div>
+    </div>
+
+    <div class="unidade rev">
+      <div class="unidade-txt">
+        <h3>Champion <span>Training Center</span></h3>
+
+        <ul class="horarios">
+          <li data-dia="1,2,3,4,5"><strong>Segunda a sexta</strong> <span>6h às 22h</span></li>
+          <li data-dia="6"><strong>Sábado</strong> <span>9h às 13h</span></li>
+          <li data-dia="0"><strong>Domingo</strong> <span>9h às 12h</span></li>
+        </ul>
+
+        <p class="endereco">
+          Via Othon de Carvalho, 23<br>
+          São Lourenço, MG — CEP 37470-000<br>
+          Telefone: <a href="tel:+553533311741">(35) 3331-1741</a>
+        </p>
+
+        <div class="unidade-acoes">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Academia+Champion+Ltda,+Via+Othon+de+Carvalho,+23,+Santa+Cec%C3%ADlia,+S%C3%A3o+Louren%C3%A7o+-+MG" target="_blank" rel="noopener" class="btn">
+            Como chegar
+            <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20visita%20na%20Champion." class="btn btn-vazado">Agendar visita</a>
+        </div>
+      </div>
+
+      <div class="unidade-mapa">
+        <iframe
+          title="Mapa da Champion Training Center em São Lourenço MG"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-45.0674%2C-22.1188%2C-45.0584%2C-22.1144&amp;layer=mapnik&amp;marker=-22.1166%2C-45.0629"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="secao secao-topo0">
+  <div class="wrap">
+    <div class="cab cab-centro rev">
+      <span class="eyebrow">Dúvidas</span>
+      <h2>Perguntas <span>frequentes</span></h2>
+    </div>
+
+    <div class="faq rev">
+      <details open>
+        <summary>Preciso agendar para conhecer a academia?</summary>
+        <div class="faq-corpo"><div><p>Não precisa. Apareça dentro do horário de funcionamento que a equipe mostra o espaço e tira suas dúvidas. Se quiser falar com o professor, chame no WhatsApp e a gente marca um horário.</p></div></div>
+      </details>
+      <details>
+        <summary>Nunca treinei musculação. Vou conseguir acompanhar?</summary>
+        <div class="faq-corpo"><div><p>Vai. Boa parte dos nossos alunos começou do zero. Você passa por uma avaliação, recebe uma ficha compatível com o seu nível e é acompanhado pelo professor até se sentir seguro na execução.</p></div></div>
+      </details>
+      <details>
+        <summary>A ficha de treino é individual?</summary>
+        <div class="faq-corpo"><div><p>Sim. É montada a partir do seu objetivo, do seu histórico e da quantidade de dias que você tem na semana, e vai sendo ajustada conforme você evolui.</p></div></div>
+      </details>
+      <details>
+        <summary>Vocês aceitam TotalPass e Wellhub?</summary>
+        <div class="faq-corpo"><div><p>Sim, os dois. Basta apresentar seu acesso na recepção e você já entra para treinar.</p></div></div>
+      </details>
+      <details>
+        <summary>A academia é acessível para cadeirante?</summary>
+        <div class="faq-corpo"><div><p>É. Temos vaga de estacionamento acessível na porta, portas e corredores adaptados para circulação de cadeira de rodas e banheiro com chuveiro acessível. Chame no WhatsApp antes da primeira visita que a equipe recebe você.</p></div></div>
+      </details>
+      <details>
+        <summary>Tem taxa de matrícula?</summary>
+        <div class="faq-corpo"><div><p>No plano anual a matrícula é isenta. Nos demais, a equipe informa o valor no atendimento, sempre antes de qualquer assinatura.</p></div></div>
+      </details>
+      <details>
+        <summary>Posso cancelar o plano mensal quando quiser?</summary>
+        <div class="faq-corpo"><div><p>Pode. O mensal não tem fidelidade, é só avisar a recepção antes da próxima renovação.</p></div></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CHAMADA FINAL ===================== -->
+<section class="final">
+  <div class="wrap">
+    <h2 class="rev">Preparado para treinar<br>de <span>verdade</span>?</h2>
+    <p class="rev" style="--d:.08s">Fale com a gente hoje e comece a treinar esta semana.</p>
+    <a class="btn rev" style="--d:.16s" href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20come%C3%A7ar%20a%20treinar%20na%20Champion.">
+      Matricule-se já
+      <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== RODAPÉ ===================== -->
+<footer class="rodape">
+  <div class="rodape-selo">
+    <div class="wrap">
+      <img src="img/escudo-m.png" alt="Champion Training Center" loading="lazy" width="260" height="327">
+      <p class="rodape-nome">CHAMPION <span>TRAINING CENTER</span></p>
+      <div class="redes">
+        <a href="https://www.instagram.com/championct_" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.56.21.96.47 1.38.89.42.42.68.82.9 1.38.16.42.36 1 .41 2.2.06 1.3.07 1.7.07 4.9s-.01 3.6-.07 4.9c-.05 1.2-.25 1.8-.41 2.2a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.42.16-1 .36-2.2.41-1.3.06-1.7.07-4.9.07s-3.6-.01-4.9-.07c-1.2-.05-1.8-.25-2.2-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1-.41-2.2C2.21 15.6 2.2 15.2 2.2 12s.01-3.6.07-4.9c.05-1.2.25-1.8.41-2.2.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.89.42-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.14 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.31-.43.17-.73.37-1.05.69-.32.32-.52.62-.69 1.05-.12.32-.27.8-.31 1.7C3.45 8.5 3.44 8.86 3.44 12s.01 3.5.07 4.74c.4.9.19 1.38.31 1.7.17.43.37.73.69 1.05.32.32.62.52 1.05.69.32.12.8.27 1.7.31 1.24.06 1.6.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.7-.31.43-.17.73-.37 1.05-.69.32-.32.52-.62.69-1.05.12-.32.27-.8.31-1.7.06-1.24.07-1.6.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.31-1.7a2.8 2.8 0 0 0-.69-1.05 2.8 2.8 0 0 0-1.05-.69c-.32-.12-.8-.27-1.7-.31C15.5 4.01 15.14 4 12 4Zm0 3.07a4.93 4.93 0 1 1 0 9.86 4.93 4.93 0 0 1 0-9.86Zm0 1.8a3.13 3.13 0 1 0 0 6.26 3.13 3.13 0 0 0 0-6.26Zm5.13-3.2a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"/></svg>
+        </a>
+        <a href="https://wa.me/5535900000000" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.39a9.86 9.86 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.26.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.24 8.21Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.17 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="rodape-grid">
+      <div class="rodape-sobre">
+        <img src="img/escudo-h.png" alt="Champion Training Center" loading="lazy" width="120" height="151">
+        <p>Academia de musculação em São Lourenço, Minas Gerais. Estrutura completa, professor na sala e a melhor avaliação da região.</p>
+      </div>
+
+      <div>
+        <h4>A academia</h4>
+        <ul>
+          <li><a href="#sobre">Sobre a Champion</a></li>
+          <li><a href="#vantagens">Vantagens</a></li>
+          <li><a href="#acessibilidade">Acessibilidade</a></li>
+          <li><a href="#alunos">Depoimentos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Planos</h4>
+        <ul>
+          <li><a href="#planos">Mensal</a></li>
+          <li><a href="#planos">Trimestral</a></li>
+          <li><a href="#planos">Anual</a></li>
+          <li><a href="#planos">TotalPass e Wellhub</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="tel:+553533311741">(35) 3331-1741</a></li>
+          <li><a href="https://wa.me/5535900000000">WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/championct_" target="_blank" rel="noopener">@championct_</a></li>
+          <li><a href="#unidade">Como chegar</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="legal">
+      &copy; 2026 Champion Training Center. Todos os direitos reservados · Via Othon de Carvalho, 23 — São Lourenço | MG — CEP 37470-000<br>
+      Razão social: ACADEMIA CHAMPION LTDA · CNPJ 50.898.159/0001-43<br>
+      Feito por <a href="https://digitalbeyond.com.br" target="_blank" rel="noopener">Digital Beyond</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== MODAL DE PLANOS ===================== -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+  <div class="modal-caixa">
+    <button class="modal-fechar" id="modal-fechar" aria-label="Fechar">&times;</button>
+    <h3 id="modal-titulo"></h3>
+    <p class="modal-preco" id="modal-preco"></p>
+    <h4>O que está incluído</h4>
+    <ul id="modal-lista"></ul>
+    <h4>Condições</h4>
+    <ul id="modal-cond"></ul>
+    <a class="btn" id="modal-cta" href="#">
+      Quero este plano
+      <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ===================== FLUTUANTES ===================== -->
+<div class="flutua">
+  <a class="fab fab-zap" href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Champion." aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.39a9.86 9.86 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.26.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.24 8.21Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.17 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29Z"/></svg>
+  </a>
+  <a class="fab fab-topo" id="voltar-topo" href="#topo" aria-label="Voltar ao topo">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </a>
+</div>
+
+<div class="acao-fixa">
+  <a class="btn" href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20me%20matricular%20na%20Champion.">
+    Matricule-se
+    <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+  </a>
+  <a class="btn btn-vazado" href="https://www.google.com/maps/dir/?api=1&amp;destination=Academia+Champion+Ltda,+Via+Othon+de+Carvalho,+23,+Santa+Cec%C3%ADlia,+S%C3%A3o+Louren%C3%A7o+-+MG" target="_blank" rel="noopener">Como chegar</a>
+</div>
+
+<script>
+(function(){
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- cabeçalho e voltar ao topo ---------- */
+  var topo = document.querySelector('.topo');
+  var btnTopo = document.getElementById('voltar-topo');
+  var tick = false;
+  function aoRolar(){
+    var y = window.scrollY;
+    topo.classList.toggle('rolado', y > 40);
+    if(btnTopo) btnTopo.classList.toggle('ver', y > 600);
+    tick = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!tick){ tick = true; requestAnimationFrame(aoRolar); }
+  }, {passive:true});
+  aoRolar();
+
+  /* ---------- menu ---------- */
+  var check = document.getElementById('menu-check');
+  document.querySelectorAll('.menu a').forEach(function(a){
+    a.addEventListener('click', function(){ check.checked = false; });
+  });
+
+  /* ---------- dia de hoje ---------- */
+  var hoje = String(new Date().getDay());
+  document.querySelectorAll('.horarios li').forEach(function(li){
+    if(li.dataset.dia.split(',').indexOf(hoje) > -1) li.classList.add('hoje');
+  });
+
+  /* ---------- carrosséis ---------- */
+  document.querySelectorAll('[data-carrossel]').forEach(function(car){
+    var slides = car.querySelectorAll('.carrossel-slide');
+    if(slides.length < 2) return;
+    var i = 0, timer = null;
+
+    var nav = document.createElement('div');
+    nav.className = 'carrossel-pontos';
+    slides.forEach(function(_, n){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Foto ' + (n + 1));
+      if(n === 0) b.classList.add('ativo');
+      b.addEventListener('click', function(){ mostrar(n); reiniciar(); });
+      nav.appendChild(b);
+    });
+    car.appendChild(nav);
+    var pontos = nav.querySelectorAll('button');
+
+    function mostrar(n){
+      slides[i].classList.remove('ativo');
+      pontos[i].classList.remove('ativo');
+      i = n;
+      slides[i].classList.add('ativo');
+      pontos[i].classList.add('ativo');
+    }
+    function proximo(){ mostrar((i + 1) % slides.length); }
+    function reiniciar(){
+      if(reduz) return;
+      clearInterval(timer);
+      timer = setInterval(proximo, 4200);
+    }
+    reiniciar();
+    car.addEventListener('mouseenter', function(){ clearInterval(timer); });
+    car.addEventListener('mouseleave', reiniciar);
+  });
+
+  /* ---------- modal dos planos ---------- */
+  var dados = {
+    mensal: {
+      titulo: 'Champion <span>Mensal</span>',
+      preco: 'A partir de <b>R$ 129</b> por mês',
+      inclui: ['Acesso livre em todos os horários de funcionamento',
+               'Ficha de treino montada pelo professor',
+               'Acompanhamento de professor na sala',
+               'Aulas coletivas incluídas',
+               'Vestiário com armário e banho quente'],
+      cond: ['Sem fidelidade: cancela quando quiser',
+             'Basta avisar a recepção antes da próxima renovação',
+             'Taxa de matrícula informada no atendimento'],
+      zap: 'https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20o%20plano%20mensal%20da%20Champion.'
+    },
+    trimestral: {
+      titulo: 'Champion <span>Trimestral</span>',
+      preco: 'A partir de <b>R$ 109</b> por mês',
+      inclui: ['Tudo o que está no plano mensal',
+               'Avaliação física por bioimpedância na entrada',
+               'Reavaliação no fim do trimestre',
+               'Treino ajustado a cada 30 dias',
+               'Aulas coletivas incluídas'],
+      cond: ['Contrato de três meses, pago mensalmente',
+             'Preço travado durante o trimestre',
+             'Taxa de matrícula informada no atendimento'],
+      zap: 'https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20o%20plano%20trimestral%20da%20Champion.'
+    },
+    anual: {
+      titulo: 'Champion <span>Anual</span>',
+      preco: 'A partir de <b>R$ 89</b> por mês',
+      inclui: ['Tudo o que está no plano trimestral',
+               'Bioimpedância a cada três meses',
+               'Treino ajustado a cada 30 dias',
+               'Aulas coletivas incluídas',
+               'Prioridade no agendamento de avaliação'],
+      cond: ['Contrato de doze meses, pago mensalmente',
+             'Matrícula isenta',
+             'Preço travado durante o contrato inteiro'],
+      zap: 'https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20o%20plano%20anual%20da%20Champion.'
+    }
+  };
+
+  var modal = document.getElementById('modal');
+  var ultimoFoco = null;
+
+  function abrirModal(chave){
+    var d = dados[chave];
+    if(!d) return;
+    document.getElementById('modal-titulo').innerHTML = d.titulo;
+    document.getElementById('modal-preco').innerHTML = d.preco;
+    document.getElementById('modal-lista').innerHTML = d.inclui.map(function(t){ return '<li>' + t + '</li>'; }).join('');
+    document.getElementById('modal-cond').innerHTML = d.cond.map(function(t){ return '<li>' + t + '</li>'; }).join('');
+    document.getElementById('modal-cta').href = d.zap;
+    modal.classList.add('aberto');
+    document.body.classList.add('travado');
+    document.getElementById('modal-fechar').focus();
+  }
+  function fecharModal(){
+    modal.classList.remove('aberto');
+    document.body.classList.remove('travado');
+    if(ultimoFoco) ultimoFoco.focus();
+  }
+
+  document.querySelectorAll('[data-modal]').forEach(function(b){
+    b.addEventListener('click', function(){ ultimoFoco = b; abrirModal(b.dataset.modal); });
+  });
+  document.getElementById('modal-fechar').addEventListener('click', fecharModal);
+  modal.addEventListener('click', function(e){ if(e.target === modal) fecharModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('aberto')) fecharModal(); });
+
+  /* ---------- aparecer ao rolar ---------- */
+  var alvos = document.querySelectorAll('.rev');
+  if(reduz || !('IntersectionObserver' in window)){
+    alvos.forEach(function(el){ el.classList.add('visivel'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(ent){
+    ent.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add('visivel');
+      obs.unobserve(e.target);
+      if(e.target.hasAttribute('data-conta')) contar(e.target);
+      e.target.querySelectorAll('[data-conta]').forEach(contar);
+    });
+  }, {threshold:0.14, rootMargin:'0px 0px -60px 0px'});
+  alvos.forEach(function(el){ obs.observe(el); });
+
+  function contar(el){
+    var bruto = el.dataset.conta.replace(',', '.');
+    var alvo = parseFloat(bruto);
+    var casas = (bruto.split('.')[1] || '').length;
+    var ini = null, dur = 1200;
+    function passo(t){
+      if(!ini) ini = t;
+      var p = Math.min((t - ini) / dur, 1);
+      el.textContent = (alvo * (1 - Math.pow(1 - p, 3))).toFixed(casas).replace('.', ',');
+      if(p < 1) requestAnimationFrame(passo);
+    }
+    requestAnimationFrame(passo);
+  }
+})();
+</script>
+
+</body>
+</html>
