@@ -1065,9 +1065,9 @@ p{ margin:0 0 1.1em; max-width:66ch; }
 
       <div class="unidade-mapa">
         <iframe
+          id="mapa"
           title="Mapa da Champion Training Center em São Lourenço MG"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=-45.0674%2C-22.1188%2C-45.0584%2C-22.1144&amp;layer=mapnik&amp;marker=-22.1166%2C-45.0629"
-          loading="lazy"
+          data-src="https://www.openstreetmap.org/export/embed.html?bbox=-45.0674%2C-22.1188%2C-45.0584%2C-22.1144&amp;layer=mapnik&amp;marker=-22.1166%2C-45.0629"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
@@ -1387,6 +1387,37 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   document.getElementById('modal-fechar').addEventListener('click', fecharModal);
   modal.addEventListener('click', function(e){ if(e.target === modal) fecharModal(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('aberto')) fecharModal(); });
+
+  /* ---------- mapa: so carrega com a largura final ----------
+     O embed do OpenStreetMap calcula o tamanho do mapa na hora que
+     carrega e nao refaz a conta depois. Se o iframe carregar antes do
+     layout assentar, metade do painel fica vazia. Entao so damos o src
+     quando a secao aparece na tela, e refazemos se a largura mudar. */
+  (function(){
+    var f = document.getElementById('mapa');
+    if(!f || !f.dataset.src) return;
+    var larg = 0, t;
+    function carregar(){
+      var l = f.clientWidth;
+      if(l < 40 || l === larg) return;      /* ainda sem largura, ou nada mudou */
+      larg = l;
+      f.src = f.dataset.src;
+    }
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(ent, o){
+        if(!ent[0].isIntersecting) return;
+        o.disconnect();
+        carregar();
+      }, { rootMargin: '300px' }).observe(f);
+    } else {
+      carregar();
+    }
+    window.addEventListener('resize', function(){
+      if(!f.src) return;                     /* ainda nao entrou na tela */
+      clearTimeout(t);
+      t = setTimeout(carregar, 400);
+    });
+  })();
 
   /* ---------- aparecer ao rolar ---------- */
   var alvos = document.querySelectorAll('.rev');
