@@ -10,8 +10,12 @@ COMO SUBIR NA VERCEL
   aparece e o site cai na foto da fachada (sem quebrar nada).
   Para conferir depois de subir, abra: SEU-SITE/vid/hero.mp4
 
-ANTES DE PUBLICAR, TROQUE:
-  - WhatsApp: procure 5535900000000 e troque pelo numero real
+CONTATO
+  Telefone e WhatsApp: (35) 3331-1741 — e o mesmo numero nos dois.
+  Sao 9 links de WhatsApp na pagina (wa.me/553533311741) e 2 de
+  ligacao (tel:+553533311741).
+
+AINDA FALTA CONFIRMAR:
   - Endereco: a pagina usa Via Othon de Carvalho, 23 (Google e CNPJ).
     A ficha do Wellhub diz 58. Confirmar com o cliente.
 
@@ -77,6 +81,16 @@ GALERIA
   foto; a galeria mostra o quadro todo (img/full/, 1000x1333).
   Se trocar uma foto, troque nos dois lugares: img/<nome>.jpg em
   1200x830 e img/full/<nome>.jpg em 1000x1333.
+
+NOME
+  O nome escrito na pagina e "Champion Centro de Treinamento", como
+  esta na parede de dentro da academia. A placa da frente ainda diz
+  "Training Center", em dourado; se trocarem a placa, vale refazer a
+  foto da fachada.
+  O texto do selo girante do hero teve de encurtar: "Centro de
+  Treinamento" e mais longo que "Training Center" e o texto passou a
+  dar mais de uma volta no anel, sobrepondo-se. Saiu o "Desde 2023",
+  que ja aparece no texto da secao "A Champion por dentro".
 
 MARCA
   O escudo foi extraido do PNG do cliente e salvo com fundo
