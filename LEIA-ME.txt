@@ -18,7 +18,7 @@ ANTES DE PUBLICAR, TROQUE:
 
 VIDEO DO HERO
   Desktop (acima de 760px): hero.webm / hero.mp4, 1024x576, deitado
-  Celular (ate 760px):      hero-mob.mp4, 432x768, em pe, 930 KB
+  Celular (ate 760px):      hero-mob.mp4, 432x768, em pe, 1,2 MB
   O site escolhe sozinho qual baixar, entao ninguem puxa os dois.
   O enquadramento do celular e um corte no centro do video deitado,
   feito separado para o aluno nao ficar cortado na tela do telefone.
@@ -26,7 +26,7 @@ VIDEO DO HERO
   O layout e o mesmo nas duas telas: escudo, titulo, botoes e notas
   por cima do video.
 
-  LOOP: o video tem 16,7s e emenda sozinho. Ele comeca e termina no
+  LOOP: o video tem 26,4s e emenda sozinho. Ele comeca e termina no
   mesmo plano do letreiro CHAMPION e os 0,9s finais dissolvem nos
   0,9s iniciais, entao nao existe salto na virada. Por isso o video
   NAO pode ter fade de entrada nem de saida: qualquer fade vira uma
@@ -38,6 +38,22 @@ VIDEO DO HERO
   nada ser interrompido no meio do movimento.
   Com o arquivo original do videomaker em 1080p da para refazer
   com mais nitidez.
+
+FOTOS
+  Todas sao do material novo que o cliente mandou em 28/10.
+  As originais sao fotos de celular em pe (1512x2016); a caixa do
+  carrossel na pagina e DEITADA (~1,3:1 no desktop, 1,6:1 no celular),
+  entao cada foto foi cortada a mao numa faixa horizontal, escolhendo
+  o que fica no quadro. Se trocar alguma, corte em 1200x830, senao o
+  navegador corta o alto sozinho e come o letreiro.
+
+  fachada   hero (so aparece se o video nao rodar)
+  amb1..4   carrossel "A Champion por dentro":
+            parede do escudo, visao ampla, bancos e halteres, fachada
+  eq1..4    carrossel "Set de equipamentos":
+            supino articulado, leg press, halteres, cardio
+  banda     fundo da chamada final (fica sob 85% de preto)
+  og        imagem que aparece ao colar o link no WhatsApp e redes
 
 MARCA
   O escudo foi extraido do PNG do cliente e salvo com fundo
