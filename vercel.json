@@ -3,8 +3,11 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
-    { "source": "/img/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
-    { "source": "/vid/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    {
+      "_comentario": "Fotos e videos ficam uma hora no navegador e depois sao conferidos em segundo plano. NAO voltar para immutable: o nome dos arquivos nao muda quando o conteudo muda, e immutable faz o navegador guardar o primeiro arquivo por um ano sem nunca mais perguntar.",
+      "source": "/(img|vid)/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=2592000" }]
+    },
     { "source": "/(.*)", "headers": [
       { "key": "X-Content-Type-Options", "value": "nosniff" },
       { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
