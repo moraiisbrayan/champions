@@ -326,6 +326,46 @@ p{ margin:0 0 1.1em; max-width:66ch; }
 .lupa-prox{ right:18px; }
 .lupa-fechar:hover, .lupa-nav:hover{ background:var(--vermelho); border-color:var(--vermelho); }
 
+/* ---------- atendimento ---------- */
+.atend{ display:grid; grid-template-columns:repeat(2,1fr); gap:0; border-top:1px solid var(--linha); }
+.atend > div{
+  padding:38px 40px 38px 0;
+  border-bottom:1px solid var(--linha);
+}
+.atend > div:nth-child(odd){ padding-right:48px; }
+.atend > div:nth-child(even){ padding-left:48px; border-left:1px solid var(--linha); }
+.atend h3{
+  font-size:1.08rem; font-weight:600; margin-bottom:10px;
+  text-transform:uppercase; letter-spacing:.01em;
+}
+.atend p{ margin:0; color:var(--apagado); font-size:.95rem; max-width:46ch; }
+
+/* ---------- method champion ---------- */
+.method-topo{ max-width:760px; }
+.method-topo h3{
+  font-size:clamp(1.1rem, 2vw, 1.4rem); font-weight:500; color:var(--medio);
+  text-transform:uppercase; letter-spacing:.04em; margin:14px 0 20px;
+}
+.method-topo p{ margin:0; color:var(--apagado); font-size:1rem; max-width:62ch; }
+.passos{ margin-top:58px; border-top:1px solid var(--linha); }
+.passo{
+  display:flex; align-items:baseline; gap:clamp(20px, 4vw, 52px);
+  padding:30px 4px; border-bottom:1px solid var(--linha);
+  transition:padding-left .3s ease, background-color .3s ease;
+}
+.passo:hover{ padding-left:18px; background:rgba(255,255,255,.015); }
+.passo b{
+  /* largura fixa porque a Poppins nao tem algarismo tabular: sem isso
+     o "01" e o "04" tem larguras diferentes e os titulos desalinham */
+  flex:none; width:clamp(48px, 6vw, 86px);
+  font-size:clamp(1.8rem, 4vw, 3rem); font-weight:700;
+  letter-spacing:-.04em; line-height:1; color:var(--linha-cl);
+  transition:color .3s ease;
+}
+.passo:hover b{ color:var(--vermelho); }
+.passo-txt h3{ font-size:1.08rem; font-weight:600; margin-bottom:8px; text-transform:uppercase; }
+.passo-txt p{ margin:0; color:var(--apagado); font-size:.95rem; max-width:52ch; }
+
 /* ---------- números ---------- */
 .numeros{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
 .numero{
@@ -591,6 +631,12 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   .selo{ display:none; }
   .cab-linha{ display:block; }
   .cab-linha p{ margin-top:14px; }
+  .atend{ grid-template-columns:1fr; }
+  .atend > div{ padding:30px 0; }
+  .atend > div:nth-child(odd){ padding-right:0; }
+  .atend > div:nth-child(even){ padding-left:0; border-left:0; }
+  .passo{ gap:18px; padding:26px 2px; }
+  .passos{ margin-top:40px; }
   .numeros{ grid-template-columns:1fr; }
   .acess ul{ grid-template-columns:1fr; gap:12px; }
   .legal{ padding-bottom:62px; }
@@ -651,6 +697,7 @@ p{ margin:0 0 1.1em; max-width:66ch; }
 
     <nav class="menu">
       <a href="#sobre">Sobre</a>
+      <a href="#method">Metodologia</a>
       <a href="#vantagens">Vantagens</a>
       <a href="#alunos">Alunos</a>
       <a href="#unidade">Unidade</a>
@@ -672,15 +719,15 @@ p{ margin:0 0 1.1em; max-width:66ch; }
 
   <div class="hero-conteudo">
     <img class="hero-escudo" src="img/escudo-g.png" alt="Champion Centro de Treinamento" width="420" height="528" fetchpriority="high">
-    <span class="eyebrow">Bem-vindo à Champion</span>
-    <h1>A Melhor Academia de Musculação<br>de <span>São Lourenço</span></h1>
-    <p class="hero-sub">Uma estrutura completa, com professor na sala do primeiro treino ao último.</p>
+    <span class="eyebrow">Champion Centro de Treinamento</span>
+    <h1>Seu lugar é <span>aqui</span>.</h1>
+    <p class="hero-sub">Mais que um centro de treinamento. Uma experiência feita para quem escolhe evoluir.</p>
     <div class="hero-acoes">
-      <a href="https://wa.me/553533311741?text=Ol%C3%A1%21%20Quero%20me%20matricular%20na%20Champion." class="btn">
-        Matricule-se
+      <a href="https://wa.me/553533311741?text=Ol%C3%A1%21%20Conheci%20o%20site%20da%20Champion%20CT%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20planos%20e%20como%20come%C3%A7ar%20a%20treinar." class="btn">
+        Viver a experiência Champion
         <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
       </a>
-      <a href="#sobre" class="btn btn-vazado">Ver a estrutura</a>
+      <a href="#sobre" class="btn btn-vazado">Conhecer a Champion</a>
     </div>
     <div class="hero-nota">
       <div class="estrelas" aria-hidden="true">
@@ -716,7 +763,7 @@ p{ margin:0 0 1.1em; max-width:66ch; }
       <div class="cab-linha">
         <div>
           <span class="eyebrow">Nossa academia</span>
-          <h2>Uma academia feita para quem<br><span>leva treino a sério</span></h2>
+          <h2>Mais que treinar.<br><span>Pertencer</span>.</h2>
         </div>
         <p>Estrutura de academia grande, com o atendimento de quem conhece o aluno pelo nome.</p>
       </div>
@@ -724,8 +771,8 @@ p{ margin:0 0 1.1em; max-width:66ch; }
 
     <div class="cartao rev">
       <div class="cartao-texto">
-        <h3>A <span>Champion</span> por dentro</h3>
-        <p>Inaugurada em 2023, a Champion nasceu para dar a São Lourenço um centro de treinamento à altura de quem treina de verdade. Sala ampla e climatizada, piso emborrachado e equipamento de linha profissional, com estacionamento próprio na porta.</p>
+        <h3>Uma equipe comprometida com a sua <span>jornada</span></h3>
+        <p>Na Champion, acreditamos que cada pessoa tem sua própria história, seus objetivos e suas conquistas. Por isso, criamos um ambiente onde você é recebido pelo nome, acompanhado por profissionais e incentivado a evoluir no seu ritmo. Aqui, você encontra mais do que um lugar para treinar. Encontra uma equipe comprometida com a sua jornada.</p>
         <a href="https://wa.me/553533311741?text=Ol%C3%A1%21%20Quero%20conhecer%20a%20Champion." class="btn">
           Quero conhecer
           <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
@@ -741,8 +788,8 @@ p{ margin:0 0 1.1em; max-width:66ch; }
 
     <div class="cartao cartao-invertido rev">
       <div class="cartao-texto">
-        <h3>Set de <span>equipamentos</span> completo</h3>
-        <p>Peso livre, aparelhos articulados de anilha, máquinas guiadas e uma área de cardio que dá conta do horário de pico. Tudo organizado por região de treino, para você montar a sessão inteira sem esperar máquina liberar.</p>
+        <h3>Estrutura pensada para sua <span>evolução</span>.</h3>
+        <p>Cada espaço da Champion foi planejado para unir desempenho, conforto e funcionalidade. Equipamentos de linha profissional, ambientes climatizados, áreas organizadas e uma estrutura que proporciona liberdade para você treinar com qualidade. Porque o ambiente em que você treina também faz parte da sua experiência.</p>
         <div class="marcas-eq">
           <span>Peso livre</span>
           <span>Articulados</span>
@@ -777,6 +824,85 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   </div>
 </section>
 
+<!-- ===================== ATENDIMENTO ===================== -->
+<section class="secao secao-topo0" id="atendimento">
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="cab-linha">
+        <div>
+          <span class="eyebrow">Atendimento</span>
+          <h2>A experiência começa<br>no <span>atendimento</span></h2>
+        </div>
+        <p>O que acontece entre a sua chegada e o seu primeiro treino.</p>
+      </div>
+    </div>
+
+    <div class="atend rev" style="--d:.08s">
+      <div>
+        <h3>Recepção personalizada</h3>
+        <p>Você é recebido com atenção desde o primeiro contato, com uma equipe preparada para orientar sua chegada.</p>
+      </div>
+      <div>
+        <h3>Acompanhamento profissional</h3>
+        <p>Professores presentes para orientar, corrigir movimentos e acompanhar seu treinamento.</p>
+      </div>
+      <div>
+        <h3>Treinamento individualizado</h3>
+        <p>Planejamento alinhado aos seus objetivos, necessidades e nível de condicionamento.</p>
+      </div>
+      <div>
+        <h3>Evolução acompanhada</h3>
+        <p>Avaliações e reavaliações para acompanhar seu desenvolvimento e orientar as próximas etapas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== METHOD CHAMPION ===================== -->
+<section class="secao secao-topo0" id="method">
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="method-topo">
+        <span class="eyebrow">Nossa metodologia</span>
+        <h2>Method <span>Champion</span>.</h2>
+        <h3>Seu objetivo. Nosso compromisso.</h3>
+        <p>Uma metodologia desenvolvida para transformar objetivos individuais em uma jornada de evolução, combinando avaliação, planejamento personalizado e acompanhamento profissional.</p>
+      </div>
+    </div>
+
+    <div class="passos">
+      <div class="passo rev">
+        <b>01</b>
+        <div class="passo-txt">
+          <h3>Avaliação inicial</h3>
+          <p>Bioimpedância, histórico e objetivo na mesa antes do primeiro treino, para saber de onde você está partindo.</p>
+        </div>
+      </div>
+      <div class="passo rev" style="--d:.06s">
+        <b>02</b>
+        <div class="passo-txt">
+          <h3>Planejamento individualizado</h3>
+          <p>A ficha é montada a partir da avaliação e dos dias que você tem na semana, não de um modelo pronto.</p>
+        </div>
+      </div>
+      <div class="passo rev" style="--d:.12s">
+        <b>03</b>
+        <div class="passo-txt">
+          <h3>Orientação profissional</h3>
+          <p>Professor na sala para corrigir execução, ajustar carga e tirar dúvida na hora em que ela aparece.</p>
+        </div>
+      </div>
+      <div class="passo rev" style="--d:.18s">
+        <b>04</b>
+        <div class="passo-txt">
+          <h3>Acompanhamento e reavaliação</h3>
+          <p>Nova medição em intervalos combinados, para ver o que mudou e decidir o próximo ciclo com número na mão.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== VANTAGENS ===================== -->
 <section class="secao secao-topo0" id="vantagens">
   <div class="wrap">
@@ -784,9 +910,9 @@ p{ margin:0 0 1.1em; max-width:66ch; }
       <div class="cab-linha">
         <div>
           <span class="eyebrow">Vantagens</span>
-          <h2>O que você só encontra<br>na <span>Champion</span></h2>
+          <h2>Cada detalhe faz<br>a <span>diferença</span></h2>
         </div>
-        <p>Serviços que normalmente são extra e aqui fazem parte do seu treino.</p>
+        <p>O que está incluído na matrícula e o que a Champion oferece por perto, sem letra miúda.</p>
       </div>
     </div>
 
@@ -849,7 +975,7 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   <div class="wrap">
     <div class="cab cab-centro rev">
       <span class="eyebrow">Nossos alunos</span>
-      <h2>Como é a experiência<br>de quem treina na <span>Champion</span></h2>
+      <h2>Quem vive a experiência,<br><span>entende</span></h2>
       <p>Avaliações publicadas por alunos no perfil da academia no Google.</p>
     </div>
 
@@ -926,8 +1052,8 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   <div class="wrap acess-grid">
     <div class="rev">
       <span class="eyebrow">Acessibilidade</span>
-      <h2>Aqui todo mundo<br><span>treina</span></h2>
-      <p style="color:var(--apagado); font-size:.98rem; margin:0;">A academia foi pensada para receber quem tem mobilidade reduzida, quem é neurodivergente e quem está voltando de uma lesão. Se você tem alguma necessidade específica, chame no WhatsApp antes de vir que a gente organiza tudo.</p>
+      <h2>Sua jornada <span>importa</span></h2>
+      <p style="color:var(--apagado); font-size:.98rem; margin:0;">Cada pessoa chega com uma história, uma rotina e necessidades diferentes. Nosso compromisso é oferecer um ambiente acolhedor, com atenção individualizada e respeito a cada jornada. Se você precisa de alguma adaptação ou orientação específica, nossa equipe está disponível para conversar antes da sua primeira visita.</p>
     </div>
 
     <ul class="rev" style="--d:.08s">
@@ -997,21 +1123,25 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   <div class="wrap">
     <div class="cab cab-centro rev">
       <span class="eyebrow">Dúvidas</span>
-      <h2>Perguntas <span>frequentes</span></h2>
+      <h2>Tudo o que você precisa<br>saber para <span>começar</span></h2>
     </div>
 
     <div class="faq rev">
       <details open>
-        <summary>Preciso agendar para conhecer a academia?</summary>
-        <div class="faq-corpo"><div><p>Não precisa. Apareça dentro do horário de funcionamento que a equipe mostra o espaço e tira suas dúvidas. Se quiser falar com o professor, chame no WhatsApp e a gente marca um horário.</p></div></div>
+        <summary>Nunca treinei. A Champion é para mim?</summary>
+        <div class="faq-corpo"><div><p>Sim. Nosso atendimento respeita sua experiência, seu condicionamento e seus objetivos. Você passa por uma avaliação, recebe orientação profissional para começar com segurança e é acompanhado até se sentir confiante na execução. Boa parte dos nossos alunos começou do zero.</p></div></div>
       </details>
       <details>
-        <summary>Nunca treinei musculação. Vou conseguir acompanhar?</summary>
-        <div class="faq-corpo"><div><p>Vai. Boa parte dos nossos alunos começou do zero. Você passa por uma avaliação, recebe uma ficha compatível com o seu nível e é acompanhado pelo professor até se sentir seguro na execução.</p></div></div>
+        <summary>Vou receber um treinamento personalizado?</summary>
+        <div class="faq-corpo"><div><p>Sim. O planejamento é montado a partir do seu objetivo, do seu histórico e da quantidade de dias que você tem na semana, e vai sendo ajustado conforme você evolui.</p></div></div>
       </details>
       <details>
-        <summary>A ficha de treino é individual?</summary>
-        <div class="faq-corpo"><div><p>Sim. É montada a partir do seu objetivo, do seu histórico e da quantidade de dias que você tem na semana, e vai sendo ajustada conforme você evolui.</p></div></div>
+        <summary>Posso conhecer a Champion antes de me matricular?</summary>
+        <div class="faq-corpo"><div><p>Pode, e não precisa agendar. Apareça dentro do horário de funcionamento que a equipe mostra o espaço e tira suas dúvidas. Se preferir falar com o professor, chame no WhatsApp e a gente marca um horário.</p></div></div>
+      </details>
+      <details>
+        <summary>Como conheço os planos e valores?</summary>
+        <div class="faq-corpo"><div><p>Há opções mensais e de períodos maiores, com condições diferentes em cada uma. Os valores são informados no atendimento, na recepção ou pelo WhatsApp, sempre antes de qualquer assinatura, e a equipe ajuda a escolher a opção que faz sentido para a sua rotina.</p></div></div>
       </details>
       <details>
         <summary>Vocês aceitam TotalPass e Wellhub?</summary>
@@ -1021,14 +1151,6 @@ p{ margin:0 0 1.1em; max-width:66ch; }
         <summary>A academia é acessível para cadeirante?</summary>
         <div class="faq-corpo"><div><p>É. Temos vaga de estacionamento acessível na porta, portas e corredores adaptados para circulação de cadeira de rodas e banheiro com chuveiro acessível. Chame no WhatsApp antes da primeira visita que a equipe recebe você.</p></div></div>
       </details>
-      <details>
-        <summary>Quanto custa para treinar na Champion?</summary>
-        <div class="faq-corpo"><div><p>Os valores e as condições de cada plano são informados no atendimento, na recepção ou pelo WhatsApp, sempre antes de qualquer assinatura.</p></div></div>
-      </details>
-      <details>
-        <summary>Quais planos vocês têm?</summary>
-        <div class="faq-corpo"><div><p>Há opções mensais e de períodos maiores, com condições diferentes em cada uma. A equipe explica as alternativas e ajuda a escolher a que faz sentido para a sua rotina.</p></div></div>
-      </details>
     </div>
   </div>
 </section>
@@ -1036,10 +1158,11 @@ p{ margin:0 0 1.1em; max-width:66ch; }
 <!-- ===================== CHAMADA FINAL ===================== -->
 <section class="final">
   <div class="wrap">
-    <h2 class="rev">Preparado para treinar<br>de <span>verdade</span>?</h2>
-    <p class="rev" style="--d:.08s">Fale com a gente hoje e comece a treinar esta semana.</p>
-    <a class="btn rev" style="--d:.16s" href="https://wa.me/553533311741?text=Ol%C3%A1%21%20Quero%20come%C3%A7ar%20a%20treinar%20na%20Champion.">
-      Matricule-se já
+    <span class="eyebrow rev">Sua jornada começa aqui</span>
+    <h2 class="rev" style="--d:.06s">O próximo passo é <span>seu</span>.</h2>
+    <p class="rev" style="--d:.1s">Você não precisa ter experiência. Não precisa estar na sua melhor forma. Precisa apenas decidir começar. Na Champion, você encontra uma equipe preparada para receber você e acompanhar sua evolução.</p>
+    <a class="btn rev" style="--d:.16s" href="https://wa.me/553533311741?text=Ol%C3%A1%21%20Conheci%20o%20site%20da%20Champion%20CT%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20planos%20e%20como%20come%C3%A7ar%20a%20treinar.">
+      Quero fazer parte da Champion
       <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
     </a>
   </div>
@@ -1066,13 +1189,15 @@ p{ margin:0 0 1.1em; max-width:66ch; }
     <div class="rodape-grid">
       <div class="rodape-sobre">
         <img src="img/escudo-h.png" alt="Champion Centro de Treinamento" loading="lazy" width="120" height="151">
-        <p>Academia de musculação em São Lourenço, Minas Gerais. Estrutura completa, professor na sala e a melhor avaliação da região.</p>
+        <p>Mais que um centro de treinamento. Um ambiente onde estrutura, metodologia e atendimento se encontram para proporcionar uma experiência de evolução. A alta performance começa com uma escolha.</p>
       </div>
 
       <div>
         <h4>A academia</h4>
         <ul>
           <li><a href="#sobre">Sobre a Champion</a></li>
+          <li><a href="#atendimento">Atendimento</a></li>
+          <li><a href="#method">Method Champion</a></li>
           <li><a href="#vantagens">Vantagens</a></li>
           <li><a href="#acessibilidade">Acessibilidade</a></li>
           <li><a href="#alunos">Depoimentos</a></li>

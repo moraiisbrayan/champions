@@ -82,6 +82,31 @@ GALERIA
   Se trocar uma foto, troque nos dois lugares: img/<nome>.jpg em
   1200x830 e img/full/<nome>.jpg em 1000x1333.
 
+GUIA DO CLIENTE (out/2026)
+  O cliente trouxe um guia de reformulacao feito no ChatGPT. Aplicado
+  como reescrita de texto mais duas secoes novas, sem mexer no layout
+  nem na hero, conforme combinado.
+
+  Reescrito: titulo e subtitulo da hero ("Seu lugar e aqui."), titulo
+  da secao sobre, os dois cartoes, vantagens, depoimentos,
+  acessibilidade, FAQ, chamada final e descricao do rodape.
+  Novo: secao "A experiencia comeca no atendimento" (4 blocos) e
+  secao "Method Champion" (4 passos numerados), entre os numeros e as
+  vantagens. Entraram tambem no menu e no rodape.
+
+  O titulo da aba e a descricao do Google mantiveram "academia de
+  musculacao em Sao Lourenco": e por essa frase que as pessoas
+  procuram, e "Seu lugar e aqui." nao diz ao buscador do que a pagina
+  trata.
+
+  NAO foi feito, porque depende do cliente:
+  - Etapa 3 pede foto de professor com aluno. Nao ha nenhuma no
+    material enviado; o cartao esta com foto de ambiente.
+  - Etapa 14 pede medicao de cliques de matricula. Precisa de uma
+    conta de analytics (GA4 ou Meta Pixel) do cliente.
+  - Etapa 8 pede depoimentos com nome e fonte: ja estao assim, com
+    nome e "Avaliacao no Google". A nota 4,8 confere com o Google.
+
 NOME
   O nome escrito na pagina e "Champion Centro de Treinamento", como
   esta na parede de dentro da academia. A placa da frente ainda diz
