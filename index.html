@@ -1285,8 +1285,29 @@ p{ margin:0 0 1.1em; max-width:66ch; }
     v.addEventListener('playing', function(){ v.classList.add('tocando'); });
     v.preload = 'auto';
     v.load();
+
+    function tocar(){
+      var p = v.play();
+      return (p && p.catch) ? p.catch(function(){}) : null;
+    }
+
+    /* O iPhone em Modo de Baixo Consumo (e em Dados Reduzidos) bloqueia
+       autoplay em qualquer site. Quando isso acontece, o primeiro toque
+       na pagina ja conta como gesto do usuario e libera o video. Entao
+       em vez de desistir e ficar so na foto, esperamos esse toque. */
+    var eventos = ['touchstart', 'pointerdown', 'click', 'scroll', 'keydown'];
+    function soltar(){
+      eventos.forEach(function(e){ window.removeEventListener(e, soltar); });
+      tocar();
+    }
     var p = v.play();
-    if(p && p.catch) p.catch(function(){});       /* bloqueou autoplay: fica a foto */
+    if(p && p.catch){
+      p.catch(function(){
+        eventos.forEach(function(e){
+          window.addEventListener(e, soltar, { passive: true });
+        });
+      });
+    }
   })();
 
   /* ---------- cabeçalho e voltar ao topo ---------- */

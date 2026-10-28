@@ -118,6 +118,23 @@ NOME
   dar mais de uma volta no anel, sobrepondo-se. Saiu o "Desde 2023",
   que ja aparece no texto da secao "A Champion por dentro".
 
+VIDEO NAO APARECE NUM IPHONE ESPECIFICO
+  O arquivo esta no formato que o iPhone aceita (H.264 High, level 3.0,
+  yuv420p, faststart). Se o video nao roda num aparelho e roda em
+  outro, e configuracao do aparelho. Tres causas, nessa ordem:
+
+  1. Modo de Baixo Consumo ligado (bateria amarela). O iOS bloqueia
+     autoplay em QUALQUER site. A pagina agora contorna: assim que a
+     pessoa toca na tela, o video comeca.
+  2. Acessibilidade > Movimento > Reduzir Movimento ligado. Nesse caso
+     a pagina NAO carrega o video de proposito e mostra a foto da
+     fachada. E a escolha certa de acessibilidade, mas se o cliente
+     preferir que o video rode mesmo assim, da para mudar.
+  3. Modo de Dados Reduzidos (Ajustes > Celular > Dados Moveis).
+     Mesmo contorno do item 1.
+
+  Em todos os casos a pagina nao quebra: entra a foto da fachada.
+
 MARCA
   O escudo foi extraido do PNG do cliente e salvo com fundo
   transparente. O nome "CHAMPION / TRAINING CENTER" e texto, nao
