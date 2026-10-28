@@ -46,7 +46,6 @@
   --max: 1240px;
   --gut: 24px;
   --raio: 18px;
-  --barra: 0px;
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
@@ -54,7 +53,6 @@ html{ scroll-behavior:smooth; scroll-padding-top:96px; }
 
 body{
   margin:0;
-  padding-bottom:var(--barra);
   background:var(--preto);
   color:var(--branco);
   font-family:var(--fonte);
@@ -529,8 +527,6 @@ p{ margin:0 0 1.1em; max-width:66ch; }
 .fab-topo:hover{ background:var(--vermelho); color:#fff; }
 .fab-topo svg{ width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
 
-.acao-fixa{ display:none; }
-
 /* =====================================================
    RESPONSIVO
    ===================================================== */
@@ -581,7 +577,6 @@ p{ margin:0 0 1.1em; max-width:66ch; }
 }
 
 @media (max-width:760px){
-  :root{ --barra:74px; }
   .secao{ padding:72px 0; }
   .final{ padding:80px 0; }
   /* mesma hero do computador: escudo, titulo, botoes e notas por cima
@@ -598,6 +593,10 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   .cab-linha p{ margin-top:14px; }
   .numeros{ grid-template-columns:1fr; }
   .acess ul{ grid-template-columns:1fr; gap:12px; }
+  .legal{ padding-bottom:62px; }
+  .flutua{ right:14px; bottom:14px; gap:10px; }
+  .fab{ width:48px; height:48px; }
+  .fab-zap svg{ width:24px; height:24px; }
   .lupa{ padding:70px 12px 108px; }
   .lupa-nav{ top:auto; bottom:28px; margin-top:0; width:48px; height:48px; }
   .lupa-ant{ left:calc(50% - 62px); }
@@ -611,15 +610,6 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   .nota-geral{ flex-direction:column; text-align:center; gap:12px; }
   .nota-geral .risco{ display:none; }
 
-  .flutua{ display:none; }
-  .acao-fixa{
-    position:fixed; left:0; right:0; bottom:0; z-index:85;
-    display:grid; grid-template-columns:1.5fr 1fr; gap:10px;
-    padding:11px var(--gut) calc(11px + env(safe-area-inset-bottom));
-    background:rgba(0,0,0,.97); border-top:1px solid var(--linha);
-    backdrop-filter:blur(12px);
-  }
-  .acao-fixa .btn{ padding:13px 10px; font-size:.76rem; }
   .lupa{ padding:70px 12px 108px; }
   .lupa-nav{ top:auto; bottom:28px; margin-top:0; width:48px; height:48px; }
   .lupa-ant{ left:calc(50% - 62px); }
@@ -1144,14 +1134,6 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   <a class="fab fab-topo" id="voltar-topo" href="#topo" aria-label="Voltar ao topo">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
   </a>
-</div>
-
-<div class="acao-fixa">
-  <a class="btn" href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20me%20matricular%20na%20Champion.">
-    Matricule-se
-    <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-  </a>
-  <a class="btn btn-vazado" href="https://www.google.com/maps/dir/?api=1&amp;destination=Academia+Champion+Ltda,+Via+Othon+de+Carvalho,+23,+Santa+Cec%C3%ADlia,+S%C3%A3o+Louren%C3%A7o+-+MG" target="_blank" rel="noopener">Como chegar</a>
 </div>
 
 <script>

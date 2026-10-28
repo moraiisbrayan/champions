@@ -64,6 +64,12 @@ FOTOS
   full/     as mesmas oito fotos inteiras, em pe, para a galeria
   og        imagem que aparece ao colar o link no WhatsApp e redes
 
+SEM BARRA FIXA NO CELULAR
+  A faixa preta que ficava colada no rodape da tela com "Matricule-se"
+  e "Como chegar" saiu a pedido do cliente. Como o botao do cabecalho
+  some abaixo de 1040px, o celular voltou a mostrar a bolha do
+  WhatsApp no canto, que e bem menor e nao tampa o conteudo.
+
 GALERIA
   Clicar em qualquer foto dos carrosseis abre ela inteira em tela
   cheia, e de la da para percorrer as oito com as setas, o teclado
