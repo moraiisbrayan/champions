@@ -12,9 +12,17 @@ COMO SUBIR NA VERCEL
 
 ANTES DE PUBLICAR, TROQUE:
   - WhatsApp: procure 5535900000000 e troque pelo numero real
-  - Precos dos planos: R$ 129 / 109 / 89 sao estimativa
   - Endereco: a pagina usa Via Othon de Carvalho, 23 (Google e CNPJ).
     A ficha do Wellhub diz 58. Confirmar com o cliente.
+
+SEM SECAO DE PLANOS
+  A secao de precos saiu a pedido do cliente. Com ela sairam o link
+  "Planos" do menu, o botao "Ver planos" do hero (virou "Ver a
+  estrutura") e o modal de detalhes. A coluna "Planos" do rodape virou
+  "Visite". Duas perguntas do FAQ falavam de valores e de fidelidade;
+  viraram "Quanto custa para treinar na Champion?" e "Quais planos
+  voces tem?", sem afirmar numero nenhum.
+  Para trazer a secao de volta, o commit que a removeu esta no Git.
 
 VIDEO DO HERO
   Desktop (acima de 760px): hero.webm / hero.mp4, 1024x576, deitado
@@ -53,7 +61,16 @@ FOTOS
   eq1..4    carrossel "Set de equipamentos":
             supino articulado, leg press, halteres, cardio
   banda     fundo da chamada final (fica sob 85% de preto)
+  full/     as mesmas oito fotos inteiras, em pe, para a galeria
   og        imagem que aparece ao colar o link no WhatsApp e redes
+
+GALERIA
+  Clicar em qualquer foto dos carrosseis abre ela inteira em tela
+  cheia, e de la da para percorrer as oito com as setas, o teclado
+  ou arrastando o dedo. O carrossel mostra so uma faixa deitada da
+  foto; a galeria mostra o quadro todo (img/full/, 1000x1333).
+  Se trocar uma foto, troque nos dois lugares: img/<nome>.jpg em
+  1200x830 e img/full/<nome>.jpg em 1000x1333.
 
 MARCA
   O escudo foi extraido do PNG do cliente e salvo com fundo

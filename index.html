@@ -115,14 +115,6 @@ p{ margin:0 0 1.1em; max-width:66ch; }
 .btn-vazado{ background:transparent; border:1px solid var(--linha-cl); color:#fff; }
 .btn-vazado:hover{ background:rgba(255,255,255,.06); box-shadow:none; }
 
-.link-det{
-  display:block; width:100%; margin-top:14px; padding:0;
-  background:none; border:0; cursor:pointer;
-  color:var(--vermelho); font-family:inherit; font-size:.86rem; font-weight:500;
-  text-align:center; transition:color .22s ease;
-}
-.link-det:hover{ color:var(--verm-cl); text-decoration:underline; }
-
 /* ---------- cabeçalho ---------- */
 .topo{
   position:sticky; top:0; z-index:70;
@@ -279,6 +271,63 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   padding:6px 12px; font-size:.78rem; color:var(--medio);
 }
 
+/* ---------- ampliar foto ---------- */
+/* so o slide visivel recebe clique: eles ficam empilhados um sobre o
+   outro, senao o ultimo do DOM capturaria tudo */
+.carrossel-slide{ pointer-events:none; }
+.carrossel-slide.ativo{ pointer-events:auto; }
+.ampliar{
+  display:block; width:100%; height:100%; padding:0;
+  border:0; background:none; cursor:zoom-in;
+}
+.ampliar-selo{
+  position:absolute; top:14px; right:14px; z-index:3;
+  display:flex; align-items:center; gap:7px;
+  padding:7px 12px; border-radius:999px;
+  background:rgba(0,0,0,.52); border:1px solid rgba(255,255,255,.18);
+  color:#fff; font-size:.68rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  transition:background-color .25s ease, border-color .25s ease;
+}
+.ampliar-selo svg{ width:13px; height:13px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.ampliar:hover .ampliar-selo,
+.ampliar:focus-visible .ampliar-selo{ background:var(--vermelho); border-color:var(--vermelho); }
+
+/* ---------- foto ampliada ---------- */
+.lupa{
+  position:fixed; inset:0; z-index:96; display:none;
+  align-items:center; justify-content:center;
+  padding:78px var(--gut) 92px;
+  background:rgba(4,4,5,.94);
+}
+@supports (backdrop-filter:blur(4px)){ .lupa{ backdrop-filter:blur(8px); } }
+.lupa.aberta{ display:flex; }
+.lupa-palco{
+  margin:0; position:relative; width:100%; max-width:1100px; height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px;
+}
+.lupa-palco img{
+  max-width:100%; max-height:100%; width:auto; height:auto;
+  object-fit:contain; display:block; border-radius:10px; background:var(--carta);
+}
+.lupa-pe{
+  display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap;
+  color:var(--medio); font-size:.88rem; text-align:center;
+}
+.lupa-conta{ color:var(--apagado); font-variant-numeric:tabular-nums; }
+.lupa-fechar, .lupa-nav{
+  position:absolute; z-index:2;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--linha-cl); border-radius:50%;
+  background:rgba(14,14,16,.92); color:#fff; cursor:pointer;
+  transition:background-color .2s ease, border-color .2s ease;
+}
+.lupa-fechar{ top:18px; right:18px; width:44px; height:44px; font-size:1.6rem; line-height:1; font-family:inherit; }
+.lupa-nav{ top:50%; margin-top:-26px; width:52px; height:52px; }
+.lupa-nav svg{ width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+.lupa-ant{ left:18px; }
+.lupa-prox{ right:18px; }
+.lupa-fechar:hover, .lupa-nav:hover{ background:var(--vermelho); border-color:var(--vermelho); }
+
 /* ---------- números ---------- */
 .numeros{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
 .numero{
@@ -303,83 +352,6 @@ p{ margin:0 0 1.1em; max-width:66ch; }
 .vantagem-icone svg{ width:21px; height:21px; fill:none; stroke:#fff; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
 .vantagem-txt h3{ font-size:1.05rem; font-weight:600; margin-bottom:2px; }
 .vantagem-txt p{ margin:0; color:var(--apagado); font-size:.93rem; }
-
-/* ---------- planos ---------- */
-.planos{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch; }
-.plano{
-  position:relative; display:flex; flex-direction:column;
-  background:var(--carta); border:1px solid var(--linha);
-  border-radius:var(--raio); padding:34px 30px 30px;
-  transition:border-color .3s ease, transform .3s ease;
-}
-.plano:hover{ border-color:var(--linha-cl); transform:translateY(-5px); }
-.plano-destaque{ border-color:var(--vermelho); background:var(--carta-2); }
-.plano-fita{
-  position:absolute; top:-12px; right:24px;
-  background:var(--vermelho); color:#fff; border-radius:5px;
-  font-size:.68rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
-  padding:5px 11px;
-}
-.plano-pill{
-  display:inline-block; align-self:flex-start;
-  border:1px solid var(--linha-cl); border-radius:7px;
-  padding:7px 14px; font-size:.82rem; font-weight:500; color:var(--medio);
-  margin-bottom:30px;
-}
-.plano-de{ color:var(--apagado); font-size:.88rem; margin:0 0 2px; }
-.plano-preco{ display:flex; align-items:baseline; gap:2px; margin-bottom:6px; }
-.plano-preco .cifra{ font-size:1.2rem; font-weight:600; }
-.plano-preco .num{ font-size:3rem; font-weight:700; letter-spacing:-.04em; line-height:1; }
-.plano-preco .mes{ font-size:1rem; font-weight:400; color:var(--medio); }
-.plano-obs{ color:var(--apagado); font-size:.88rem; margin-bottom:24px; }
-.plano ul{ list-style:none; padding:0; margin:0 0 28px; }
-.plano li{
-  position:relative; padding:9px 0 9px 26px;
-  font-size:.93rem; color:var(--medio); border-bottom:1px solid var(--linha);
-}
-.plano li:last-child{ border-bottom:0; }
-.plano li::before{
-  content:""; position:absolute; left:0; top:17px;
-  width:12px; height:7px; border-left:2px solid var(--vermelho); border-bottom:2px solid var(--vermelho);
-  transform:rotate(-45deg);
-}
-.plano .btn{ width:100%; margin-top:auto; }
-
-/* ---------- modal ---------- */
-.modal{
-  position:fixed; inset:0; z-index:95; display:none;
-  align-items:center; justify-content:center; padding:var(--gut);
-  background:rgba(0,0,0,.78); backdrop-filter:blur(6px);
-}
-.modal.aberto{ display:flex; animation:sobe .3s ease both; }
-.modal-caixa{
-  position:relative; width:100%; max-width:520px; max-height:86vh; overflow-y:auto;
-  background:var(--carta); border:1px solid var(--linha-cl); border-radius:var(--raio);
-  padding:40px 36px;
-}
-.modal-fechar{
-  position:absolute; top:16px; right:16px; width:36px; height:36px;
-  border:0; border-radius:50%; background:var(--carta-2); color:var(--medio);
-  cursor:pointer; font-size:1.3rem; line-height:1;
-  transition:background-color .2s ease, color .2s ease;
-}
-.modal-fechar:hover{ background:var(--vermelho); color:#fff; }
-.modal-caixa h3{ font-size:1.4rem; margin-bottom:6px; text-transform:uppercase; }
-.modal-caixa h3 span{ color:var(--vermelho); }
-.modal-preco{ color:var(--medio); font-size:1rem; margin-bottom:24px; }
-.modal-preco b{ color:#fff; font-size:1.5rem; font-weight:700; }
-.modal-caixa h4{ font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; color:var(--apagado); margin:22px 0 12px; }
-.modal-caixa ul{ list-style:none; padding:0; margin:0; }
-.modal-caixa li{
-  position:relative; padding:8px 0 8px 24px; font-size:.93rem; color:var(--medio);
-  border-bottom:1px solid var(--linha);
-}
-.modal-caixa li::before{
-  content:""; position:absolute; left:0; top:16px;
-  width:11px; height:6px; border-left:2px solid var(--vermelho); border-bottom:2px solid var(--vermelho);
-  transform:rotate(-45deg);
-}
-.modal-caixa .btn{ width:100%; margin-top:28px; }
 
 /* ---------- avaliações ---------- */
 .nota-geral{
@@ -563,7 +535,6 @@ p{ margin:0 0 1.1em; max-width:66ch; }
    RESPONSIVO
    ===================================================== */
 @media (max-width:1040px){
-  .planos{ grid-template-columns:1fr; max-width:460px; margin:0 auto; }
   .numeros{ grid-template-columns:repeat(2,1fr); }
   .unidade{ grid-template-columns:1fr; }
   .unidade-mapa{ min-height:320px; }
@@ -621,22 +592,17 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   .hero-escudo{ width:min(92px,23%); margin-bottom:20px; }
   .hero-sub{ font-size:1rem; margin-bottom:28px; }
   .hero-nota{ margin-top:26px; font-size:.84rem; gap:6px 12px; }
-}
-
-/* telas bem estreitas: o bloco da hero precisa caber sem o visitante
-   ter de rolar para ver o botao */
-@media (max-width:380px){
-  .hero{ padding:74px 0 94px; }
-  .hero h1{ font-size:1.78rem; margin-bottom:16px; }
-  .hero-escudo{ width:76px; margin-bottom:16px; }
-  .hero-sub{ font-size:.92rem; margin-bottom:24px; }
-  .hero-nota{ margin-top:20px; font-size:.78rem; }
   .hero-acoes .btn{ width:100%; }
   .selo{ display:none; }
   .cab-linha{ display:block; }
   .cab-linha p{ margin-top:14px; }
   .numeros{ grid-template-columns:1fr; }
   .acess ul{ grid-template-columns:1fr; gap:12px; }
+  .lupa{ padding:70px 12px 108px; }
+  .lupa-nav{ top:auto; bottom:28px; margin-top:0; width:48px; height:48px; }
+  .lupa-ant{ left:calc(50% - 62px); }
+  .lupa-prox{ right:calc(50% - 62px); }
+  .ampliar-selo{ top:10px; right:10px; padding:6px 10px; font-size:.62rem; }
   .unidade-txt{ padding:36px 26px; }
   .unidade-acoes .btn{ width:100%; }
   .horarios .hoje::after{ left:auto; right:0; top:-12px; }
@@ -644,7 +610,6 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   .vantagem{ align-items:flex-start; gap:16px; }
   .nota-geral{ flex-direction:column; text-align:center; gap:12px; }
   .nota-geral .risco{ display:none; }
-  .modal-caixa{ padding:34px 26px; }
 
   .flutua{ display:none; }
   .acao-fixa{
@@ -655,6 +620,21 @@ p{ margin:0 0 1.1em; max-width:66ch; }
     backdrop-filter:blur(12px);
   }
   .acao-fixa .btn{ padding:13px 10px; font-size:.76rem; }
+  .lupa{ padding:70px 12px 108px; }
+  .lupa-nav{ top:auto; bottom:28px; margin-top:0; width:48px; height:48px; }
+  .lupa-ant{ left:calc(50% - 62px); }
+  .lupa-prox{ right:calc(50% - 62px); }
+  .ampliar-selo{ top:10px; right:10px; padding:6px 10px; font-size:.62rem; }
+}
+
+/* telas bem estreitas: o bloco da hero precisa caber sem o visitante
+   ter de rolar para ver o botao */
+@media (max-width:380px){
+  .hero{ padding:74px 0 94px; }
+  .hero h1{ font-size:1.78rem; margin-bottom:16px; }
+  .hero-escudo{ width:76px; margin-bottom:16px; }
+  .hero-sub{ font-size:.92rem; margin-bottom:24px; }
+  .hero-nota{ margin-top:20px; font-size:.78rem; }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -682,7 +662,6 @@ p{ margin:0 0 1.1em; max-width:66ch; }
     <nav class="menu">
       <a href="#sobre">Sobre</a>
       <a href="#vantagens">Vantagens</a>
-      <a href="#planos">Planos</a>
       <a href="#alunos">Alunos</a>
       <a href="#unidade">Unidade</a>
     </nav>
@@ -711,7 +690,7 @@ p{ margin:0 0 1.1em; max-width:66ch; }
         Matricule-se
         <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
       </a>
-      <a href="#planos" class="btn btn-vazado">Ver planos</a>
+      <a href="#sobre" class="btn btn-vazado">Ver a estrutura</a>
     </div>
     <div class="hero-nota">
       <div class="estrelas" aria-hidden="true">
@@ -763,10 +742,10 @@ p{ margin:0 0 1.1em; max-width:66ch; }
         </a>
       </div>
       <div class="carrossel" data-carrossel>
-        <div class="carrossel-slide ativo"><picture><source srcset="img/amb1.webp" type="image/webp"><img src="img/amb1.jpg" alt="Parede com o escudo iluminado da Champion na sala de treino" loading="lazy" width="900" height="1200"></picture></div>
-        <div class="carrossel-slide"><picture><source srcset="img/amb2.webp" type="image/webp"><img src="img/amb2.jpg" alt="Vista ampla da sala de musculação da Champion" loading="lazy" width="900" height="1200"></picture></div>
-        <div class="carrossel-slide"><picture><source srcset="img/amb3.webp" type="image/webp"><img src="img/amb3.jpg" alt="Área de bancos e halteres com a área de cardio ao fundo" loading="lazy" width="900" height="1200"></picture></div>
-        <div class="carrossel-slide"><picture><source srcset="img/amb4.webp" type="image/webp"><img src="img/amb4.jpg" alt="Fachada da Champion Training Center em São Lourenço" loading="lazy" width="900" height="1200"></picture></div>
+        <div class="carrossel-slide ativo"><button type="button" class="ampliar" data-foto="img/full/amb1.jpg" data-webp="img/full/amb1.webp" data-legenda="Parede com o escudo iluminado da Champion na sala de treino" aria-label="Ampliar foto: Parede com o escudo iluminado da Champion na sala de treino"><picture><source srcset="img/amb1.webp" type="image/webp"><img src="img/amb1.jpg" alt="Parede com o escudo iluminado da Champion na sala de treino" loading="lazy" width="900" height="1200"></picture><span class="ampliar-selo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3H3v6M15 3h6v6M9 21H3v-6M15 21h6v-6"/></svg>Ampliar</span></button></div>
+        <div class="carrossel-slide"><button type="button" class="ampliar" data-foto="img/full/amb2.jpg" data-webp="img/full/amb2.webp" data-legenda="Vista ampla da sala de musculação da Champion" aria-label="Ampliar foto: Vista ampla da sala de musculação da Champion"><picture><source srcset="img/amb2.webp" type="image/webp"><img src="img/amb2.jpg" alt="Vista ampla da sala de musculação da Champion" loading="lazy" width="900" height="1200"></picture><span class="ampliar-selo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3H3v6M15 3h6v6M9 21H3v-6M15 21h6v-6"/></svg>Ampliar</span></button></div>
+        <div class="carrossel-slide"><button type="button" class="ampliar" data-foto="img/full/amb3.jpg" data-webp="img/full/amb3.webp" data-legenda="Área de bancos e halteres com a área de cardio ao fundo" aria-label="Ampliar foto: Área de bancos e halteres com a área de cardio ao fundo"><picture><source srcset="img/amb3.webp" type="image/webp"><img src="img/amb3.jpg" alt="Área de bancos e halteres com a área de cardio ao fundo" loading="lazy" width="900" height="1200"></picture><span class="ampliar-selo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3H3v6M15 3h6v6M9 21H3v-6M15 21h6v-6"/></svg>Ampliar</span></button></div>
+        <div class="carrossel-slide"><button type="button" class="ampliar" data-foto="img/full/amb4.jpg" data-webp="img/full/amb4.webp" data-legenda="Fachada da Champion Training Center em São Lourenço" aria-label="Ampliar foto: Fachada da Champion Training Center em São Lourenço"><picture><source srcset="img/amb4.webp" type="image/webp"><img src="img/amb4.jpg" alt="Fachada da Champion Training Center em São Lourenço" loading="lazy" width="900" height="1200"></picture><span class="ampliar-selo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3H3v6M15 3h6v6M9 21H3v-6M15 21h6v-6"/></svg>Ampliar</span></button></div>
       </div>
     </div>
 
@@ -787,10 +766,10 @@ p{ margin:0 0 1.1em; max-width:66ch; }
         </a>
       </div>
       <div class="carrossel" data-carrossel>
-        <div class="carrossel-slide ativo"><picture><source srcset="img/eq1.webp" type="image/webp"><img src="img/eq1.jpg" alt="Supino articulado e fileira de máquinas da Champion" loading="lazy" width="900" height="1200"></picture></div>
-        <div class="carrossel-slide"><picture><source srcset="img/eq2.webp" type="image/webp"><img src="img/eq2.jpg" alt="Leg press e bancos na área de peso livre" loading="lazy" width="900" height="1200"></picture></div>
-        <div class="carrossel-slide"><picture><source srcset="img/eq3.webp" type="image/webp"><img src="img/eq3.jpg" alt="Rack de halteres e anilhas da Champion" loading="lazy" width="900" height="1200"></picture></div>
-        <div class="carrossel-slide"><picture><source srcset="img/eq4.webp" type="image/webp"><img src="img/eq4.jpg" alt="Área de cardio com esteiras e escada" loading="lazy" width="900" height="1200"></picture></div>
+        <div class="carrossel-slide ativo"><button type="button" class="ampliar" data-foto="img/full/eq1.jpg" data-webp="img/full/eq1.webp" data-legenda="Supino articulado e fileira de máquinas da Champion" aria-label="Ampliar foto: Supino articulado e fileira de máquinas da Champion"><picture><source srcset="img/eq1.webp" type="image/webp"><img src="img/eq1.jpg" alt="Supino articulado e fileira de máquinas da Champion" loading="lazy" width="900" height="1200"></picture><span class="ampliar-selo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3H3v6M15 3h6v6M9 21H3v-6M15 21h6v-6"/></svg>Ampliar</span></button></div>
+        <div class="carrossel-slide"><button type="button" class="ampliar" data-foto="img/full/eq2.jpg" data-webp="img/full/eq2.webp" data-legenda="Leg press e bancos na área de peso livre" aria-label="Ampliar foto: Leg press e bancos na área de peso livre"><picture><source srcset="img/eq2.webp" type="image/webp"><img src="img/eq2.jpg" alt="Leg press e bancos na área de peso livre" loading="lazy" width="900" height="1200"></picture><span class="ampliar-selo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3H3v6M15 3h6v6M9 21H3v-6M15 21h6v-6"/></svg>Ampliar</span></button></div>
+        <div class="carrossel-slide"><button type="button" class="ampliar" data-foto="img/full/eq3.jpg" data-webp="img/full/eq3.webp" data-legenda="Rack de halteres e anilhas da Champion" aria-label="Ampliar foto: Rack de halteres e anilhas da Champion"><picture><source srcset="img/eq3.webp" type="image/webp"><img src="img/eq3.jpg" alt="Rack de halteres e anilhas da Champion" loading="lazy" width="900" height="1200"></picture><span class="ampliar-selo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3H3v6M15 3h6v6M9 21H3v-6M15 21h6v-6"/></svg>Ampliar</span></button></div>
+        <div class="carrossel-slide"><button type="button" class="ampliar" data-foto="img/full/eq4.jpg" data-webp="img/full/eq4.webp" data-legenda="Área de cardio com esteiras e escada" aria-label="Ampliar foto: Área de cardio com esteiras e escada"><picture><source srcset="img/eq4.webp" type="image/webp"><img src="img/eq4.jpg" alt="Área de cardio com esteiras e escada" loading="lazy" width="900" height="1200"></picture><span class="ampliar-selo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3H3v6M15 3h6v6M9 21H3v-6M15 21h6v-6"/></svg>Ampliar</span></button></div>
       </div>
     </div>
   </div>
@@ -870,78 +849,6 @@ p{ margin:0 0 1.1em; max-width:66ch; }
           <h3>Estacionamento próprio</h3>
           <p>Vagas na porta, incluindo vaga acessível. Você chega, estaciona e sobe para treinar.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== PLANOS ===================== -->
-<section class="secao secao-topo0" id="planos">
-  <div class="wrap">
-    <div class="cab rev">
-      <div class="cab-linha">
-        <div>
-          <span class="eyebrow">Planos</span>
-          <h2>Conheça os planos<br><span>disponíveis</span></h2>
-        </div>
-        <p>Sem taxa escondida e sem pegadinha na renovação. Você escolhe e começa a treinar no mesmo dia.</p>
-      </div>
-    </div>
-
-    <div class="planos">
-      <div class="plano rev">
-        <span class="plano-pill">Champion | Mensal</span>
-        <p class="plano-de">A partir de</p>
-        <div class="plano-preco"><span class="cifra">R$</span><span class="num">129</span><span class="mes">/mês</span></div>
-        <p class="plano-obs">Sem fidelidade, cancela quando quiser.</p>
-        <ul>
-          <li>Acesso livre em todos os horários</li>
-          <li>Ficha montada pelo professor</li>
-          <li>Acompanhamento na sala</li>
-          <li>Aulas coletivas incluídas</li>
-        </ul>
-        <a href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20o%20plano%20mensal%20da%20Champion." class="btn">
-          Comece agora
-          <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-        <button class="link-det" data-modal="mensal">Detalhes</button>
-      </div>
-
-      <div class="plano plano-destaque rev" style="--d:.08s">
-        <span class="plano-fita">Mais escolhido</span>
-        <span class="plano-pill">Champion | Trimestral</span>
-        <p class="plano-de">A partir de</p>
-        <div class="plano-preco"><span class="cifra">R$</span><span class="num">109</span><span class="mes">/mês</span></div>
-        <p class="plano-obs">Três meses, pagos mensalmente.</p>
-        <ul>
-          <li>Tudo o que tem no mensal</li>
-          <li>Avaliação por bioimpedância</li>
-          <li>Reavaliação no fim do trimestre</li>
-          <li>Treino ajustado a cada 30 dias</li>
-        </ul>
-        <a href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20o%20plano%20trimestral%20da%20Champion." class="btn">
-          Comece agora
-          <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-        <button class="link-det" data-modal="trimestral">Detalhes</button>
-      </div>
-
-      <div class="plano rev" style="--d:.16s">
-        <span class="plano-pill">Champion | Anual</span>
-        <p class="plano-de">A partir de</p>
-        <div class="plano-preco"><span class="cifra">R$</span><span class="num">89</span><span class="mes">/mês</span></div>
-        <p class="plano-obs">Doze meses, o melhor custo por treino.</p>
-        <ul>
-          <li>Tudo o que tem no trimestral</li>
-          <li>Bioimpedância a cada três meses</li>
-          <li>Matrícula isenta</li>
-          <li>Preço travado no contrato inteiro</li>
-        </ul>
-        <a href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20o%20plano%20anual%20da%20Champion." class="btn">
-          Garanta já
-          <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-        <button class="link-det" data-modal="anual">Detalhes</button>
       </div>
     </div>
   </div>
@@ -1096,7 +1003,7 @@ p{ margin:0 0 1.1em; max-width:66ch; }
 </section>
 
 <!-- ===================== FAQ ===================== -->
-<section class="secao secao-topo0">
+<section class="secao secao-topo0" id="duvidas">
   <div class="wrap">
     <div class="cab cab-centro rev">
       <span class="eyebrow">Dúvidas</span>
@@ -1125,12 +1032,12 @@ p{ margin:0 0 1.1em; max-width:66ch; }
         <div class="faq-corpo"><div><p>É. Temos vaga de estacionamento acessível na porta, portas e corredores adaptados para circulação de cadeira de rodas e banheiro com chuveiro acessível. Chame no WhatsApp antes da primeira visita que a equipe recebe você.</p></div></div>
       </details>
       <details>
-        <summary>Tem taxa de matrícula?</summary>
-        <div class="faq-corpo"><div><p>No plano anual a matrícula é isenta. Nos demais, a equipe informa o valor no atendimento, sempre antes de qualquer assinatura.</p></div></div>
+        <summary>Quanto custa para treinar na Champion?</summary>
+        <div class="faq-corpo"><div><p>Os valores e as condições de cada plano são informados no atendimento, na recepção ou pelo WhatsApp, sempre antes de qualquer assinatura.</p></div></div>
       </details>
       <details>
-        <summary>Posso cancelar o plano mensal quando quiser?</summary>
-        <div class="faq-corpo"><div><p>Pode. O mensal não tem fidelidade, é só avisar a recepção antes da próxima renovação.</p></div></div>
+        <summary>Quais planos vocês têm?</summary>
+        <div class="faq-corpo"><div><p>Há opções mensais e de períodos maiores, com condições diferentes em cada uma. A equipe explica as alternativas e ajuda a escolher a que faz sentido para a sua rotina.</p></div></div>
       </details>
     </div>
   </div>
@@ -1183,12 +1090,12 @@ p{ margin:0 0 1.1em; max-width:66ch; }
       </div>
 
       <div>
-        <h4>Planos</h4>
+        <h4>Visite</h4>
         <ul>
-          <li><a href="#planos">Mensal</a></li>
-          <li><a href="#planos">Trimestral</a></li>
-          <li><a href="#planos">Anual</a></li>
-          <li><a href="#planos">TotalPass e Wellhub</a></li>
+          <li><a href="#unidade">Horários</a></li>
+          <li><a href="#unidade">Como chegar</a></li>
+          <li><a href="#duvidas">Perguntas frequentes</a></li>
+          <li><a href="https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20visita%20na%20Champion.">Agendar visita</a></li>
         </ul>
       </div>
 
@@ -1211,21 +1118,22 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   </div>
 </footer>
 
-<!-- ===================== MODAL DE PLANOS ===================== -->
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
-  <div class="modal-caixa">
-    <button class="modal-fechar" id="modal-fechar" aria-label="Fechar">&times;</button>
-    <h3 id="modal-titulo"></h3>
-    <p class="modal-preco" id="modal-preco"></p>
-    <h4>O que está incluído</h4>
-    <ul id="modal-lista"></ul>
-    <h4>Condições</h4>
-    <ul id="modal-cond"></ul>
-    <a class="btn" id="modal-cta" href="#">
-      Quero este plano
-      <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-    </a>
-  </div>
+<!-- ===================== FOTO AMPLIADA ===================== -->
+<div class="lupa" id="lupa" role="dialog" aria-modal="true" aria-label="Fotos da Champion">
+  <button type="button" class="lupa-fechar" id="lupa-fechar" aria-label="Fechar">&times;</button>
+  <button type="button" class="lupa-nav lupa-ant" id="lupa-ant" aria-label="Foto anterior">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+  </button>
+  <button type="button" class="lupa-nav lupa-prox" id="lupa-prox" aria-label="Próxima foto">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+  </button>
+  <figure class="lupa-palco">
+    <picture><source id="lupa-webp" type="image/webp"><img id="lupa-img" alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></picture>
+    <figcaption class="lupa-pe">
+      <span id="lupa-legenda"></span>
+      <span class="lupa-conta" id="lupa-conta"></span>
+    </figcaption>
+  </figure>
 </div>
 
 <!-- ===================== FLUTUANTES ===================== -->
@@ -1338,76 +1246,76 @@ p{ margin:0 0 1.1em; max-width:66ch; }
     car.addEventListener('mouseleave', reiniciar);
   });
 
-  /* ---------- modal dos planos ---------- */
-  var dados = {
-    mensal: {
-      titulo: 'Champion <span>Mensal</span>',
-      preco: 'A partir de <b>R$ 129</b> por mês',
-      inclui: ['Acesso livre em todos os horários de funcionamento',
-               'Ficha de treino montada pelo professor',
-               'Acompanhamento de professor na sala',
-               'Aulas coletivas incluídas',
-               'Vestiário com armário e banho quente'],
-      cond: ['Sem fidelidade: cancela quando quiser',
-             'Basta avisar a recepção antes da próxima renovação',
-             'Taxa de matrícula informada no atendimento'],
-      zap: 'https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20o%20plano%20mensal%20da%20Champion.'
-    },
-    trimestral: {
-      titulo: 'Champion <span>Trimestral</span>',
-      preco: 'A partir de <b>R$ 109</b> por mês',
-      inclui: ['Tudo o que está no plano mensal',
-               'Avaliação física por bioimpedância na entrada',
-               'Reavaliação no fim do trimestre',
-               'Treino ajustado a cada 30 dias',
-               'Aulas coletivas incluídas'],
-      cond: ['Contrato de três meses, pago mensalmente',
-             'Preço travado durante o trimestre',
-             'Taxa de matrícula informada no atendimento'],
-      zap: 'https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20o%20plano%20trimestral%20da%20Champion.'
-    },
-    anual: {
-      titulo: 'Champion <span>Anual</span>',
-      preco: 'A partir de <b>R$ 89</b> por mês',
-      inclui: ['Tudo o que está no plano trimestral',
-               'Bioimpedância a cada três meses',
-               'Treino ajustado a cada 30 dias',
-               'Aulas coletivas incluídas',
-               'Prioridade no agendamento de avaliação'],
-      cond: ['Contrato de doze meses, pago mensalmente',
-             'Matrícula isenta',
-             'Preço travado durante o contrato inteiro'],
-      zap: 'https://wa.me/5535900000000?text=Ol%C3%A1%21%20Quero%20o%20plano%20anual%20da%20Champion.'
+  /* ---------- foto ampliada ----------
+     As fotos do carrossel aparecem cortadas numa faixa deitada. Aqui
+     abre o arquivo inteiro, em pe, e da para percorrer as oito. */
+  (function(){
+    var lupa = document.getElementById('lupa');
+    var botoes = [].slice.call(document.querySelectorAll('.ampliar'));
+    if(!lupa || !botoes.length) return;
+
+    var img      = document.getElementById('lupa-img');
+    var webp     = document.getElementById('lupa-webp');
+    var legenda  = document.getElementById('lupa-legenda');
+    var conta    = document.getElementById('lupa-conta');
+    var fecharEl = document.getElementById('lupa-fechar');
+    var atual = 0, ultimoFoco = null;
+
+    function mostra(i){
+      atual = (i + botoes.length) % botoes.length;
+      var b = botoes[atual];
+      /* o srcset vem antes do src: e assim que o <picture> escolhe o webp */
+      if(b.dataset.webp) webp.srcset = b.dataset.webp;
+      else               webp.removeAttribute('srcset');
+      img.src     = b.dataset.foto;
+      img.alt     = b.dataset.legenda;
+      legenda.textContent = b.dataset.legenda;
+      conta.textContent   = (atual + 1) + ' de ' + botoes.length;
+      /* adianta a vizinha para a navegacao nao piscar */
+      [1, -1].forEach(function(d){
+        var v = botoes[(atual + d + botoes.length) % botoes.length];
+        var p = new Image(); p.src = v.dataset.foto;
+      });
     }
-  };
+    function abre(i, origem){
+      ultimoFoco = origem || null;
+      mostra(i);
+      lupa.classList.add('aberta');
+      document.body.classList.add('travado');
+      fecharEl.focus();
+    }
+    function fecha(){
+      lupa.classList.remove('aberta');
+      document.body.classList.remove('travado');
+      if(ultimoFoco) ultimoFoco.focus();
+    }
+    function aberta(){ return lupa.classList.contains('aberta'); }
 
-  var modal = document.getElementById('modal');
-  var ultimoFoco = null;
+    botoes.forEach(function(b, i){
+      b.addEventListener('click', function(){ abre(i, b); });
+    });
+    fecharEl.addEventListener('click', fecha);
+    document.getElementById('lupa-ant').addEventListener('click', function(){ mostra(atual - 1); });
+    document.getElementById('lupa-prox').addEventListener('click', function(){ mostra(atual + 1); });
+    lupa.addEventListener('click', function(e){ if(e.target === lupa) fecha(); });
 
-  function abrirModal(chave){
-    var d = dados[chave];
-    if(!d) return;
-    document.getElementById('modal-titulo').innerHTML = d.titulo;
-    document.getElementById('modal-preco').innerHTML = d.preco;
-    document.getElementById('modal-lista').innerHTML = d.inclui.map(function(t){ return '<li>' + t + '</li>'; }).join('');
-    document.getElementById('modal-cond').innerHTML = d.cond.map(function(t){ return '<li>' + t + '</li>'; }).join('');
-    document.getElementById('modal-cta').href = d.zap;
-    modal.classList.add('aberto');
-    document.body.classList.add('travado');
-    document.getElementById('modal-fechar').focus();
-  }
-  function fecharModal(){
-    modal.classList.remove('aberto');
-    document.body.classList.remove('travado');
-    if(ultimoFoco) ultimoFoco.focus();
-  }
+    document.addEventListener('keydown', function(e){
+      if(!aberta()) return;
+      if(e.key === 'Escape')     fecha();
+      if(e.key === 'ArrowLeft')  mostra(atual - 1);
+      if(e.key === 'ArrowRight') mostra(atual + 1);
+    });
 
-  document.querySelectorAll('[data-modal]').forEach(function(b){
-    b.addEventListener('click', function(){ ultimoFoco = b; abrirModal(b.dataset.modal); });
-  });
-  document.getElementById('modal-fechar').addEventListener('click', fecharModal);
-  modal.addEventListener('click', function(e){ if(e.target === modal) fecharModal(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('aberto')) fecharModal(); });
+    /* arrastar o dedo para o lado troca de foto */
+    var x0 = null;
+    lupa.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, { passive:true });
+    lupa.addEventListener('touchend', function(e){
+      if(x0 === null) return;
+      var d = e.changedTouches[0].clientX - x0;
+      x0 = null;
+      if(Math.abs(d) > 45) mostra(atual + (d < 0 ? 1 : -1));
+    }, { passive:true });
+  })();
 
   /* ---------- mapa: so carrega com a largura final ----------
      O embed do OpenStreetMap calcula o tamanho do mapa na hora que
