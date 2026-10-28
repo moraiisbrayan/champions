@@ -30,7 +30,7 @@ SEM SECAO DE PLANOS
 
 VIDEO DO HERO
   Desktop (acima de 760px): hero.webm / hero.mp4, 1024x576, deitado
-  Celular (ate 760px):      hero-mob.mp4, 432x768, em pe, 1,2 MB
+  Celular (ate 760px):      hero-mob.mp4, 432x768, em pe, 1,3 MB
   O site escolhe sozinho qual baixar, entao ninguem puxa os dois.
   O enquadramento do celular e um corte no centro do video deitado,
   feito separado para o aluno nao ficar cortado na tela do telefone.
@@ -38,13 +38,14 @@ VIDEO DO HERO
   O layout e o mesmo nas duas telas: escudo, titulo, botoes e notas
   por cima do video.
 
-  LOOP: o video tem 26,4s e emenda sozinho. Ele comeca e termina no
-  mesmo plano do letreiro CHAMPION e os 0,9s finais dissolvem nos
-  0,9s iniciais, entao nao existe salto na virada. Por isso o video
+  LOOP: o video tem 31s e emenda sozinho. O ultimo quadro e igual ao
+  primeiro, e dai os 0,9s iniciais dissolvem na chegada da aluna,
+  entao nao existe salto na virada. Por isso o video
   NAO pode ter fade de entrada nem de saida: qualquer fade vira uma
   piscada preta a cada volta.
 
   Origem: video institucional enviado pelo cliente (65s, 1024x576).
+  Comeca pela chegada da aluna e a mao na catraca, como no original.
   Ficaram de fora a cartela final com a logo, as tomadas embacadas e
   as escuras demais. Os cortes seguem os cortes do proprio video, para
   nada ser interrompido no meio do movimento.
