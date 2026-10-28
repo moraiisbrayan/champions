@@ -3,7 +3,12 @@ Feito por Digital Beyond
 
 COMO SUBIR NA VERCEL
   npx vercel --prod     (rodar dentro desta pasta)
-  ou arraste a pasta em vercel.com/new
+  ou arraste a pasta INTEIRA em vercel.com/new
+
+  IMPORTANTE: a pasta precisa subir com as tres coisas dentro:
+  index.html, img/ e vid/. Se a vid/ ficar de fora, o video nao
+  aparece e o site cai na foto da fachada (sem quebrar nada).
+  Para conferir depois de subir, abra: SEU-SITE/vid/hero.mp4
 
 ANTES DE PUBLICAR, TROQUE:
   - WhatsApp: procure 5535900000000 e troque pelo numero real
@@ -11,32 +16,30 @@ ANTES DE PUBLICAR, TROQUE:
   - Endereco: a pagina usa Via Othon de Carvalho, 23 (Google e CNPJ).
     A ficha do Wellhub diz 58. Confirmar com o cliente.
 
-ARQUIVOS
-  index.html    pagina
-  img/          fotos e marca
-  vid/          video do hero (desktop e celular) + posters
-  vercel.json   cache e cabecalhos
+VIDEO DO HERO
+  Desktop (acima de 760px): hero.webm / hero.mp4, 1024x576, deitado
+  Celular (ate 760px):      hero-mob.mp4, 432x768, em pe, 930 KB
+  O site escolhe sozinho qual baixar, entao ninguem puxa os dois.
+  O enquadramento do celular e um corte no centro do video deitado,
+  feito separado para o aluno nao ficar cortado na tela do telefone.
 
-SOBRE A MARCA
-  O escudo foi extraido do PNG enviado pelo cliente (1254x1254),
-  separado do circulo preto e salvo com fundo transparente em tres
-  tamanhos (escudo-h, escudo-m, escudo-g).
-  O nome "CHAMPION / TRAINING CENTER" e texto, nao imagem: fica nitido
-  em qualquer tela e pode ser editado direto no HTML.
-  O favicon usa o emblema com o circulo preto (icone-32 e icone-180).
-  Se o cliente conseguir o arquivo VETORIAL (SVG/AI/EPS), vale trocar:
-  fica nitido em qualquer tamanho e permite colorir por codigo.
+  O layout e o mesmo nas duas telas: escudo, titulo, botoes e notas
+  por cima do video.
 
-SOBRE O VIDEO DO HERO
-  Origem: Reels do Instagram da academia, girado 90 graus (o material
-  foi filmado deitado). Trecho de 3s a 17s, mudo, em loop.
+  LOOP: o video tem 16,7s e emenda sozinho. Ele comeca e termina no
+  mesmo plano do letreiro CHAMPION e os 0,9s finais dissolvem nos
+  0,9s iniciais, entao nao existe salto na virada. Por isso o video
+  NAO pode ter fade de entrada nem de saida: qualquer fade vira uma
+  piscada preta a cada volta.
 
-  Sao dois arquivos e o JavaScript escolhe um so, pelo tamanho da tela:
-    desktop  vid/hero.webm (1,7 MB) ou vid/hero.mp4 (2,2 MB) — 1280x720
-    celular  vid/hero-mob.mp4 (680 KB) — 720x404, com fade
-  Nenhum navegador baixa os dois. Enquanto o video carrega aparece o
-  poster, e se o aparelho bloquear autoplay fica a foto da fachada.
-  Quem tem "reduzir movimento" ligado no sistema ve so a foto.
+  Origem: video institucional enviado pelo cliente (65s, 1024x576).
+  Ficaram de fora a cartela final com a logo, as tomadas embacadas e
+  as escuras demais. Os cortes seguem os cortes do proprio video, para
+  nada ser interrompido no meio do movimento.
+  Com o arquivo original do videomaker em 1080p da para refazer
+  com mais nitidez.
 
-  IMPORTANTE: a pasta vid/ precisa subir junto. Depois de publicar,
-  abra SEU-SITE/vid/hero.mp4 no navegador. Se der 404, o video nao foi.
+MARCA
+  O escudo foi extraido do PNG do cliente e salvo com fundo
+  transparente. O nome "CHAMPION / TRAINING CENTER" e texto, nao
+  imagem. Se conseguirem o vetor (SVG/AI/EPS), vale trocar.

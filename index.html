@@ -173,6 +173,9 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   position:absolute; inset:0; width:100%; height:100%;
   object-fit:cover; object-position:58% 60%;
 }
+/* o video ja vem enquadrado: centro. A foto de reserva e a fachada,
+   que pede um enquadramento proprio (regra acima). */
+.hero-fundo .hero-video{ object-position:50% 50%; }
 .hero-fundo .hero-video{ z-index:1; opacity:0; transition:opacity .7s ease; }
 .hero-fundo .hero-video.tocando{ opacity:1; }
 .hero-fundo .hero-img{ z-index:0; animation:zoomlento 30s ease-out both; }
@@ -610,22 +613,24 @@ p{ margin:0 0 1.1em; max-width:66ch; }
   :root{ --barra:74px; }
   .secao{ padding:72px 0; }
   .final{ padding:80px 0; }
-  .hero{ display:block; min-height:0; padding:0 0 86px; }
-  .hero-fundo{
-    position:relative; inset:auto;
-    height:clamp(230px, 46vw, 360px);
-    margin-bottom:34px;
-  }
-  .hero-fundo .hero-video,
-  .hero-fundo .hero-img{ object-position:50% 45%; }
-  .hero-fundo::after{
-    background:linear-gradient(180deg,
-      rgba(0,0,0,.26) 0%,
-      rgba(0,0,0,.14) 42%,
-      rgba(0,0,0,.72) 82%,
-      var(--preto) 100%);
-  }
-  .hero-escudo{ width:min(86px,21%); margin-bottom:18px; }
+  /* mesma hero do computador: escudo, titulo, botoes e notas por cima
+     do video. O arquivo do celular ja e um corte em pe, entao o video
+     preenche a tela sem perder o enquadramento. */
+  .hero{ min-height:min(88vh,780px); padding:96px 0 104px; }
+  .hero-fundo .hero-img{ object-position:58% 58%; }
+  .hero-escudo{ width:min(92px,23%); margin-bottom:20px; }
+  .hero-sub{ font-size:1rem; margin-bottom:28px; }
+  .hero-nota{ margin-top:26px; font-size:.84rem; gap:6px 12px; }
+}
+
+/* telas bem estreitas: o bloco da hero precisa caber sem o visitante
+   ter de rolar para ver o botao */
+@media (max-width:380px){
+  .hero{ padding:74px 0 94px; }
+  .hero h1{ font-size:1.78rem; margin-bottom:16px; }
+  .hero-escudo{ width:76px; margin-bottom:16px; }
+  .hero-sub{ font-size:.92rem; margin-bottom:24px; }
+  .hero-nota{ margin-top:20px; font-size:.78rem; }
   .hero-acoes .btn{ width:100%; }
   .selo{ display:none; }
   .cab-linha{ display:block; }
